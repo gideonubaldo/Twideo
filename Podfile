@@ -7,5 +7,5 @@ target 'Twideo' do
 
   # Pods for Twideo
 pod 'Firebase/Core'
-
+pod 'Firebase/Auth'
 end
