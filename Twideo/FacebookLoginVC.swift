@@ -57,6 +57,8 @@ class FacebookLoginVC: UIViewController, LoginButtonDelegate{
             }
             print("Firebase login done")
             if let user = Auth.auth().currentUser{
+                
+                self.performSegue(withIdentifier: "loggedIn", sender: self)
                 print("Current firebase user is")
                 print(user)
             }
