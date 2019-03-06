@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqu-Zg-BkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="-802"/>
+            <point key="canvasLocation" x="2873" y="-242"/>
         </scene>
         <!--Facebook LoginVC-->
         <scene sceneID="Rnf-ny-Mfc">
@@ -197,9 +197,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="fLN-Lr-Kar" kind="popoverPresentation" popoverAnchorView="Dyp-Se-z1v" id="KCt-OP-THk">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="fLN-Lr-Kar" kind="show" id="aaN-X3-A43"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1c-l5-w3a">
@@ -225,26 +223,29 @@
             </objects>
             <point key="canvasLocation" x="1920.8" y="69.715142428785612"/>
         </scene>
-        <!--Map-->
+        <!--Map View Controller-->
         <scene sceneID="vVM-HL-PsW">
             <objects>
-                <viewController storyboardIdentifier="Map" id="YGx-YD-uod" customClass="Map" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" id="YGx-YD-uod" customClass="MapViewController" customModule="Twideo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eXd-Jn-jld">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="65k-7s-pZt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="haD-P9-0Uj"/>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="65k-7s-pZt" id="Y5T-0v-1Vd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hh-J4-7YZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2872.8000000000002" y="-212.74362818590706"/>
+            <point key="canvasLocation" x="3861.5999999999999" y="437.63118440779613"/>
         </scene>
         <!--Video View Controller-->
         <scene sceneID="gY7-Pg-fgZ">
@@ -268,6 +269,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUq-wp-dum">
+                                <rect key="frame" x="70" y="449" width="234" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View the location photo was taken"/>
+                                <connections>
+                                    <segue destination="YGx-YD-uod" kind="show" id="JBK-8P-3DA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iLT-LF-Jim"/>
@@ -278,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzZ-jX-Jql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934" y="516"/>
+            <point key="canvasLocation" x="2872.8000000000002" y="437.63118440779613"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3wS-9g-4Pm">
@@ -486,8 +495,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="586" height="1107"/>
-        <image name="folder" width="512" height="512"/>
-        <image name="profileplacer" width="1800" height="1800"/>
+        <image name="bg" width="586.5" height="1107.5"/>
+        <image name="folder" width="46.428211212158203" height="46.428211212158203"/>
+        <image name="profileplacer" width="648" height="648"/>
     </resources>
 </document>
