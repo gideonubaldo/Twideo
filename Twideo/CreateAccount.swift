@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class CreateAccount: UIViewController {
     var refUser: DatabaseReference!
@@ -26,20 +27,38 @@ class CreateAccount: UIViewController {
     }
     
     func addUser(){
-        //generating a new key inside artists node
-        //and also getting the generated key
-        let key = refUser.childByAutoId().key
-        //creating artist with the given values
-        let user = ["id":key,
-                    "userName": textFieldName.text! as String,
-                    "userPass": textFieldPass.text! as String
-        ]
         
-        refUser.child(key!).setValue(user)
-        
-        //displaying message
-        //labelMessage.text = "Artist Added"
-    }
+            
+            if textFieldName.text == "" {
+                let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                present(alertController, animated: true, completion: nil)
+                
+            } else {
+                Auth.auth().createUser(withEmail: textFieldName.text!, password: textFieldPass.text!) { (user, error) in
+                    
+                    if error == nil {
+                        print("You have successfully signed up")
+                        //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+                        
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                        self.present(vc!, animated: true, completion: nil)
+                        
+                    } else {
+                        let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+    
     
 }
 
