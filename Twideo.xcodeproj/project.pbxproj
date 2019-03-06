@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 943B976F222DD49400001534 /* GoogleService-Info.plist */; };
+		949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F9E6C222F3E23004F4953 /* ProfileViewController.swift */; };
 		94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A508222DCDC50000821B /* AppDelegate.swift */; };
 		94A5A50B222DCDC50000821B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A50A222DCDC50000821B /* ViewController.swift */; };
 		94A5A50E222DCDC50000821B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50C222DCDC50000821B /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		943B976F222DD49400001534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		949F9E6C222F3E23004F4953 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		94A5A505222DCDC50000821B /* Twideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A5A508222DCDC50000821B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A5A50A222DCDC50000821B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */,
 				B33F621E222F383A00CA0B95 /* TableViewController.swift */,
 				94A5A50A222DCDC50000821B /* ViewController.swift */,
+				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
 				94A5A50F222DCDC70000821B /* Assets.xcassets */,
 				94A5A511222DCDC70000821B /* LaunchScreen.storyboard */,
@@ -234,6 +237,7 @@
 			files = (
 				B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */,
 				94A5A50B222DCDC50000821B /* ViewController.swift in Sources */,
+				949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */,
 				94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */,
 				B33F621F222F383A00CA0B95 /* TableViewController.swift in Sources */,
 			);
