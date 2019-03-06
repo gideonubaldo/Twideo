@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+
 import FacebookCore
 import FacebookLogin
 import FirebaseAuth
+import FirebaseDatabase
 class FacebookLoginVC: UIViewController, LoginButtonDelegate{
     
     override func viewDidLoad() {
@@ -57,7 +59,7 @@ class FacebookLoginVC: UIViewController, LoginButtonDelegate{
             }
             print("Firebase login done")
             if let user = Auth.auth().currentUser{
-                
+                Database.database().reference().child("users").updateChildValues([user.uid:1])
                 self.performSegue(withIdentifier: "loggedIn", sender: self)
                 print("Current firebase user is")
                 print(user)

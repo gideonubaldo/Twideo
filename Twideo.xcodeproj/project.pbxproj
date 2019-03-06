@@ -14,7 +14,7 @@
 		94A5A510222DCDC70000821B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50F222DCDC70000821B /* Assets.xcassets */; };
 		94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A511222DCDC70000821B /* LaunchScreen.storyboard */; };
 		B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */; };
-		B33F621F222F383A00CA0B95 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33F621E222F383A00CA0B95 /* TableViewController.swift */; };
+		B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33F621E222F383A00CA0B95 /* VideoViewController.swift */; };
 		F3BE9810308FAC04F9E3CEE7 /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70657D8D33878B55C7BC5B0 /* Pods_Twideo.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		94A5A512222DCDC70000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A5A514222DCDC70000821B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginVC.swift; sourceTree = "<group>"; };
-		B33F621E222F383A00CA0B95 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B33F621E222F383A00CA0B95 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		C9F1EA7B61551B07FDA1DE12 /* Pods-Twideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.debug.xcconfig"; sourceTree = "<group>"; };
 		E70657D8D33878B55C7BC5B0 /* Pods_Twideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A85B61E4ACB824FCB65C77 /* Pods-Twideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 			children = (
 				94A5A508222DCDC50000821B /* AppDelegate.swift */,
 				B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */,
-				B33F621E222F383A00CA0B95 /* TableViewController.swift */,
+				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
 				94A5A50A222DCDC50000821B /* ViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
 				94A5A50F222DCDC70000821B /* Assets.xcassets */,
@@ -205,6 +205,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -218,6 +219,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,7 +237,7 @@
 				B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */,
 				94A5A50B222DCDC50000821B /* ViewController.swift in Sources */,
 				94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */,
-				B33F621F222F383A00CA0B95 /* TableViewController.swift in Sources */,
+				B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
