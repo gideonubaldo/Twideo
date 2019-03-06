@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class CreateAccount: UIViewController {
     var refUser: DatabaseReference!

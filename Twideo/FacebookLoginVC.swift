@@ -93,9 +93,11 @@ class FacebookLoginVC: UIViewController, LoginButtonDelegate{
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
                     
+                    self.performSegue(withIdentifier: "fromloginToVideo", sender: nil)
+                    
                     //Go to the HomeViewController if the login is sucessful
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Map")
-                    self.present(vc!, animated: true, completion: nil)
+//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Video")
+//                    self.present(vc!, animated: true, completion: nil)
                     
                 } else {
                     

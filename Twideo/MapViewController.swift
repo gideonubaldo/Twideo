@@ -17,6 +17,12 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         map.centerCoordinate.latitude = 37.3352
         map.centerCoordinate.longitude = -121.8811
+        let region = MKCoordinateRegion(center: map.centerCoordinate, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
+        map.setRegion(map.regionThatFits(region), animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = map.centerCoordinate
+        map.addAnnotation(annotation)
         
     }
     

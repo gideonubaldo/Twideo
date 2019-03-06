@@ -178,8 +178,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-Rq-dOB">
-                                <rect key="frame" x="139" y="100" width="97" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username@yahoo.com" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-Rq-dOB">
+                                <rect key="frame" x="139" y="100" width="171" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -217,11 +217,12 @@
                         <outlet property="emailTextField" destination="Iqr-Rq-dOB" id="bQG-VT-gNt"/>
                         <outlet property="passwordTextField" destination="ghc-gH-0Uy" id="ivG-V4-Wac"/>
                         <segue destination="jKc-Aj-gse" kind="show" identifier="loggedIn" id="Bbm-ty-cVE"/>
+                        <segue destination="jKc-Aj-gse" kind="show" identifier="fromloginToVideo" id="CpO-9b-EnO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PnJ-Wd-9LN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920.8" y="69.715142428785612"/>
+            <point key="canvasLocation" x="2130" y="34"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="vVM-HL-PsW">
@@ -250,7 +251,7 @@
         <!--Video View Controller-->
         <scene sceneID="gY7-Pg-fgZ">
             <objects>
-                <viewController id="jKc-Aj-gse" customClass="VideoViewController" customModule="Twideo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Video" id="jKc-Aj-gse" customClass="VideoViewController" customModule="Twideo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dqq-3b-Iyc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -287,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzZ-jX-Jql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2872.8000000000002" y="437.63118440779613"/>
+            <point key="canvasLocation" x="2873" y="573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3wS-9g-4Pm">
@@ -495,8 +496,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="586.5" height="1107.5"/>
-        <image name="folder" width="46.428211212158203" height="46.428211212158203"/>
-        <image name="profileplacer" width="648" height="648"/>
+        <image name="bg" width="586" height="1107"/>
+        <image name="folder" width="512" height="512"/>
+        <image name="profileplacer" width="1800" height="1800"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CpO-9b-EnO"/>
+    </inferredMetricsTieBreakers>
 </document>
