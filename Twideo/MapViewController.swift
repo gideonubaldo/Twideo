@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 class MapViewController: UIViewController {
-    
+    //mapkit tutorial: https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
     @IBOutlet weak var map: MKMapView!
     
     override func viewDidLoad(){

@@ -8,30 +8,63 @@
 
 import Foundation
 import UIKit
-
+import FBSDKCoreKit
+import FBSDKLoginKit
 import FacebookCore
 import FacebookLogin
 import FirebaseAuth
 import FirebaseDatabase
-class FacebookLoginVC: UIViewController, LoginButtonDelegate{
+class FacebookLoginVC: UIViewController, FBSDKLoginButtonDelegate, LoginButtonDelegate{
+    
+    
+ 
+    
+    //facebook login tutorial: https://www.youtube.com/watch?v=8-WXdfjFvbw
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+   
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let loginButton = LoginButton(readPermissions: [.publicProfile])
-        loginButton.center = view.center
-        self.view.addSubview(loginButton)
-        loginButton.delegate = self
+
+        facebookLoginButton.center = view.center
+        facebookLoginButton.delegate = self
+        facebookLoginButton.readPermissions = ["public_profile"]
+//        let loginButton = LoginButton(readPermissions: [.publicProfile])
+//        loginButton.center = view.center
+//        self.view.addSubview(loginButton)
+//        loginButton.delegate = self
         
         if let accessToken = AccessToken.current{
             print("User is already logged in")
             firebaseFacebookLogin(accessToken: accessToken.authenticationToken)
         }
     }
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User logged out")
+        
+
+    }
     
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        if ((error) != nil) {
+            // Process error
+            print(error)
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+            print("CANCELLED")
+        }
+        else {
+            // Navigate to other view
+            firebaseFacebookLogin(accessToken: (FBSDKAccessToken.current()?.tokenString)!)
+        }
+        
+    }
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         print("User logged in")
         
@@ -42,6 +75,7 @@ class FacebookLoginVC: UIViewController, LoginButtonDelegate{
             print("CANCELLED")
         case .success(let grantedPermissions, let declinedPermissions, let accessToken):
             print("SUCCESS")
+        
             firebaseFacebookLogin(accessToken: accessToken.authenticationToken)
         }
     }
@@ -93,12 +127,8 @@ class FacebookLoginVC: UIViewController, LoginButtonDelegate{
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
                     
-                    self.performSegue(withIdentifier: "fromloginToVideo", sender: nil)
-                    
-                    //Go to the HomeViewController if the login is sucessful
-//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Video")
-//                    self.present(vc!, animated: true, completion: nil)
-                    
+                    self.performSegue(withIdentifier: "loggedIn", sender: nil)
+                
                 } else {
                     
                     //Tells the user that there is an error and then gets firebase to tell them the error

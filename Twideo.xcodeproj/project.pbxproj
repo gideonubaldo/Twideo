@@ -10,12 +10,13 @@
 		943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 943B976F222DD49400001534 /* GoogleService-Info.plist */; };
 		949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F9E6C222F3E23004F4953 /* ProfileViewController.swift */; };
 		94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A508222DCDC50000821B /* AppDelegate.swift */; };
-		94A5A50B222DCDC50000821B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A50A222DCDC50000821B /* ViewController.swift */; };
 		94A5A50E222DCDC50000821B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50C222DCDC50000821B /* Main.storyboard */; };
 		94A5A510222DCDC70000821B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50F222DCDC70000821B /* Assets.xcassets */; };
 		94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A511222DCDC70000821B /* LaunchScreen.storyboard */; };
 		B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */; };
 		B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33F621E222F383A00CA0B95 /* VideoViewController.swift */; };
+		B38584A22240B41400BA1A75 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A12240B41400BA1A75 /* AlbumsViewController.swift */; };
+		B38584A42240B45E00BA1A75 /* IndividualAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */; };
 		E2F40A00222F425400515593 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F409FF222F425400515593 /* CreateAccount.swift */; };
 		E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F40A01222FBF8000515593 /* MapViewController.swift */; };
 		F3BE9810308FAC04F9E3CEE7 /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70657D8D33878B55C7BC5B0 /* Pods_Twideo.framework */; };
@@ -26,13 +27,14 @@
 		949F9E6C222F3E23004F4953 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		94A5A505222DCDC50000821B /* Twideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A5A508222DCDC50000821B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		94A5A50A222DCDC50000821B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94A5A50D222DCDC50000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94A5A50F222DCDC70000821B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A5A512222DCDC70000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A5A514222DCDC70000821B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginVC.swift; sourceTree = "<group>"; };
 		B33F621E222F383A00CA0B95 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		B38584A12240B41400BA1A75 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAlbumViewController.swift; sourceTree = "<group>"; };
 		C9F1EA7B61551B07FDA1DE12 /* Pods-Twideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.debug.xcconfig"; sourceTree = "<group>"; };
 		E2F409FF222F425400515593 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		E2F40A01222FBF8000515593 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -83,19 +85,28 @@
 			isa = PBXGroup;
 			children = (
 				94A5A508222DCDC50000821B /* AppDelegate.swift */,
-				B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */,
+				B38584A02240B36700BA1A75 /* Authentication */,
 				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
-				94A5A50A222DCDC50000821B /* ViewController.swift */,
 				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
+				E2F40A01222FBF8000515593 /* MapViewController.swift */,
+				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
+				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
-				94A5A50F222DCDC70000821B /* Assets.xcassets */,
 				94A5A511222DCDC70000821B /* LaunchScreen.storyboard */,
+				94A5A50F222DCDC70000821B /* Assets.xcassets */,
 				94A5A514222DCDC70000821B /* Info.plist */,
 				943B976F222DD49400001534 /* GoogleService-Info.plist */,
-				E2F409FF222F425400515593 /* CreateAccount.swift */,
-				E2F40A01222FBF8000515593 /* MapViewController.swift */,
 			);
 			path = Twideo;
+			sourceTree = "<group>";
+		};
+		B38584A02240B36700BA1A75 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */,
+				E2F409FF222F425400515593 /* CreateAccount.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		D4BD046C1462B94A0BD9B66A /* Frameworks */ = {
@@ -243,13 +254,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B38584A22240B41400BA1A75 /* AlbumsViewController.swift in Sources */,
 				B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */,
 				E2F40A00222F425400515593 /* CreateAccount.swift in Sources */,
-				94A5A50B222DCDC50000821B /* ViewController.swift in Sources */,
 				E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */,
 				949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */,
 				94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */,
 				B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */,
+				B38584A42240B45E00BA1A75 /* IndividualAlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

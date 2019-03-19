@@ -14,6 +14,8 @@ import FirebaseDatabase
 class VideoViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    
+    
     var player = AVPlayer()
     var playerController = AVPlayerViewController()
     var videoId: String?{
