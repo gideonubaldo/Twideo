@@ -13,4 +13,5 @@ pod 'Firebase/Storage'
 pod 'FBSDKLoginKit'
 pod 'FacebookCore'
 pod 'FacebookLogin'
+pod 'SideMenu'
 end

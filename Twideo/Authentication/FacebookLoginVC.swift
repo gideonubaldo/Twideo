@@ -32,6 +32,8 @@ class FacebookLoginVC: UIViewController, FBSDKLoginButtonDelegate, LoginButtonDe
         facebookLoginButton.center = view.center
         facebookLoginButton.delegate = self
         facebookLoginButton.readPermissions = ["public_profile"]
+        
+        facebookLoginButton.sizeToFit()
 //        let loginButton = LoginButton(readPermissions: [.publicProfile])
 //        loginButton.center = view.center
 //        self.view.addSubview(loginButton)
