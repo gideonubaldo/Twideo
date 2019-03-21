@@ -11,17 +11,36 @@ import UIKit
 import SideMenu
 class ProfileSlideOutViewController: UIViewController{
     
+    var tableViewController: AlbumsViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        print(SideMenuManager.default.menuWidth)
         
-        print(presentingViewController?.view.widthAnchor)
+    }
+    
+    @IBAction func myAlbumsPressed(_ sender: Any) {
+        tableViewController!.isSharedAlbums = false
+        tableViewController!.selectedAlbums = tableViewController!.myAlbums
+        
+    }
+    
+    @IBAction func sharedAlbumsPressed(_ sender: Any) {
+        
+        tableViewController!.isSharedAlbums = true//will cause add button to disappear
+        tableViewController!.selectedAlbums = tableViewController!.sharedAlbums
+        
+    
     }
     
     
 }
 
 extension ProfileSlideOutViewController: UISideMenuNavigationControllerDelegate{
+    
+    
+    
+    
+    
     
 }
