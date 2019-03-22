@@ -15,19 +15,19 @@ class IndividualAlbumViewController: UICollectionViewController{
     var isSharedAlbums = Bool()//if false, the round button will appear
     
     override func viewDidLoad() {
-        print("DIDLOAD")
+        
         
         if let album = album {
-            print( album["title"] as! String)
             navigationItem.title = (album["title"] as! String)
         }
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
         if isSharedAlbums == false{
             createFloatingButton()
         }
-        
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         if roundButton.superview != nil {
             DispatchQueue.main.async {
                 self.roundButton.removeFromSuperview()
@@ -85,10 +85,14 @@ class IndividualAlbumViewController: UICollectionViewController{
     }
     @objc func addButtonPressed(){
         
-        //        let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
-        //        let createAlbumVC = storyboard.instantiateViewController(withIdentifier: "CreateAlbum") as! AddAlbumViewController
+                let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
+                let createVideoVC = storyboard.instantiateViewController(withIdentifier: "CreateVideo") as! AddVideoViewController
+            createVideoVC.album = album!
         //        createAlbumVC.delegate = self
-        //        navigationController?.pushViewController(createAlbumVC, animated: true)
+        
+//        let createVideoVC = AddVideoViewController()
+        present(createVideoVC, animated: false, completion: nil)
+//                navigationController?.pushViewController(createVideoVC, animated: true)
         
         print("add pressed")
         

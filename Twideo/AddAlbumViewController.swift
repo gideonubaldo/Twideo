@@ -43,7 +43,6 @@ class AddAlbumViewController: UIViewController {
             self.descriptionTextField.text = nil
             
             //valid
-            print("READY TO SUBMIT")
             self.navigationController?.popToRootViewController(animated: false)
                 
             

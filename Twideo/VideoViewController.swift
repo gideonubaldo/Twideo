@@ -48,7 +48,6 @@ class VideoViewController: UIViewController {
         
         let videoURL = NSURL(string: self.videoUrl!)
         player = AVPlayer(url: videoURL! as URL)
-        let playerController = AVPlayerViewController()
         playerController.player = player
         self.addChild(playerController)
 

@@ -72,52 +72,78 @@
             </objects>
             <point key="canvasLocation" x="1244" y="-41.829085457271368"/>
         </scene>
-        <!--Create a Video-->
-        <scene sceneID="Fba-mN-sGO">
+        <!--Add Video View Controller-->
+        <scene sceneID="JLh-wU-Ubd">
             <objects>
-                <viewController storyboardIdentifier="CreateVideo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gsy-HI-cff" userLabel="Create a Video" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eFg-6B-QXX">
+                <viewController storyboardIdentifier="CreateVideo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GR1-m2-HxZ" customClass="AddVideoViewController" customModule="Twideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nW3-jN-xMC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUC-GW-7cW">
-                                <rect key="frame" x="148" y="397" width="79" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXS-gf-JlC">
+                                <rect key="frame" x="17" y="372" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sKS-Gk-d4S">
+                                <rect key="frame" x="117" y="367" width="242" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3B-w5-QJW">
+                                <rect key="frame" x="232" y="504" width="79" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.83921568629999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="submitPressed:" destination="Gsy-HI-cff" eventType="touchUpInside" id="SSi-3U-ePX"/>
+                                    <action selector="submitButtonPressed:" destination="GR1-m2-HxZ" eventType="touchUpInside" id="MRH-TD-RDj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm0-oe-QYr">
-                                <rect key="frame" x="16" y="310" width="93" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osv-Ff-dtB">
+                                <rect key="frame" x="121" y="288" width="132" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AV3-qY-Fmo">
-                                <rect key="frame" x="117" y="305" width="242" height="30"/>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.83921568629999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choose Video">
+                                    <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseVideoPressed:" destination="GR1-m2-HxZ" eventType="touchUpInside" id="Dug-rF-0FA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf6-Uc-8pp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <color key="backgroundColor" red="0.53725490200000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-m8-llB">
+                                <rect key="frame" x="85" y="504" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.83921568629999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="GR1-m2-HxZ" eventType="touchUpInside" id="ID5-gR-FgW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="gHr-j0-SMB"/>
+                        <viewLayoutGuide key="safeArea" id="6eb-rF-U5W"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create an Album" id="R0d-Bd-e6h"/>
                     <connections>
-                        <outlet property="descriptionTextField" destination="AV3-qY-Fmo" id="ffg-2k-cDH"/>
-                        <outlet property="submitButton" destination="wUC-GW-7cW" id="U60-CC-pyd"/>
+                        <outlet property="descriptionTextField" destination="sKS-Gk-d4S" id="Y6D-ET-0DU"/>
+                        <outlet property="videoPlayerView" destination="bf6-Uc-8pp" id="SD5-0u-IBa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1jM-zQ-fsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="195-kO-zFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="-42"/>
+            <point key="canvasLocation" x="1952.8" y="-42.728635682158924"/>
         </scene>
     </scenes>
 </document>
