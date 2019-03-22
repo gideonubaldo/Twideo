@@ -19,10 +19,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var shareCountLabel: UILabel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         albumCountTitle.numberOfLines = 0
         [albumCountTitle .sizeToFit()]
+        
     }
     
 

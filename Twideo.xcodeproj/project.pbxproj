@@ -13,6 +13,7 @@
 		94A5A50E222DCDC50000821B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50C222DCDC50000821B /* Main.storyboard */; };
 		94A5A510222DCDC70000821B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50F222DCDC70000821B /* Assets.xcassets */; };
 		94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A511222DCDC70000821B /* LaunchScreen.storyboard */; };
+		B30AC40222457CE9003970F6 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30AC40122457CE9003970F6 /* VideoCell.swift */; };
 		B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */; };
 		B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33F621E222F383A00CA0B95 /* VideoViewController.swift */; };
 		B34193E42242C04B0027E7CA /* AddViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34193E32242C04B0027E7CA /* AddViews.storyboard */; };
@@ -36,6 +37,7 @@
 		94A5A50F222DCDC70000821B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A5A512222DCDC70000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A5A514222DCDC70000821B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B30AC40122457CE9003970F6 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginVC.swift; sourceTree = "<group>"; };
 		B33F621E222F383A00CA0B95 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		B34193E32242C04B0027E7CA /* AddViews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddViews.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				94A5A50F222DCDC70000821B /* Assets.xcassets */,
 				94A5A514222DCDC70000821B /* Info.plist */,
 				943B976F222DD49400001534 /* GoogleService-Info.plist */,
+				B30AC40122457CE9003970F6 /* VideoCell.swift */,
 			);
 			path = Twideo;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */,
 				B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */,
 				B34193EE22443A2F0027E7CA /* AddVideoViewController.swift in Sources */,
+				B30AC40222457CE9003970F6 /* VideoCell.swift in Sources */,
 				949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */,
 				B34193E62242C2850027E7CA /* AddAlbumViewController.swift in Sources */,
 				94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */,

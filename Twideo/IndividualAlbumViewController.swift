@@ -7,19 +7,28 @@
 //
 
 import UIKit
-
-class IndividualAlbumViewController: UICollectionViewController{
+import Firebase
+class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
     
     var album: NSDictionary?
     var roundButton = UIButton()
     var isSharedAlbums = Bool()//if false, the round button will appear
+    let reuseIdentifier = "VideoCell"
     
+    var videos = [VideoModel]()
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         
+        loadVideos()
         
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         if let album = album {
             navigationItem.title = (album["title"] as! String)
         }
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -35,9 +44,70 @@ class IndividualAlbumViewController: UICollectionViewController{
             }
         }
     }
-   
+    
+    func loadVideos(){
+        
+        guard let albumId = album!["albumId"] as? String else{
+            print("tried to load videos but failed")
+            return
+        }
+        Database.database().reference().child("album-videos").child(albumId).observe(.childAdded) { (snapshot) in
+            
+            let videoId = snapshot.key
+            print(videoId)
+            Database.database().reference().child("videos").child(videoId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
+                print("LOADING .. \(snapshot)")
+                let videoDict = snapshot.value as! NSDictionary
+                let videoModel = VideoModel(dictionary: videoDict)
+                self.videos.append(videoModel)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            })
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    //selected cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    //number of cells
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        return videos.count
+        
+    }
+    
+    //text to fill cell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCell
+        
+        cell.configureCell(videoModel: videos[indexPath.row])
+    
+        // Configure the cell
+        return cell
+        
+        
+    }
+    
+    
+    
+    
+    
     
     func createFloatingButton() {
+        
         roundButton = UIButton(type: .custom)
         roundButton.translatesAutoresizingMaskIntoConstraints = false
         roundButton.backgroundColor = .white
@@ -85,17 +155,45 @@ class IndividualAlbumViewController: UICollectionViewController{
     }
     @objc func addButtonPressed(){
         
-                let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
-                let createVideoVC = storyboard.instantiateViewController(withIdentifier: "CreateVideo") as! AddVideoViewController
-            createVideoVC.album = album!
+        let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
+        let createVideoVC = storyboard.instantiateViewController(withIdentifier: "CreateVideo") as! AddVideoViewController
+        createVideoVC.album = album!
         //        createAlbumVC.delegate = self
         
-//        let createVideoVC = AddVideoViewController()
-        present(createVideoVC, animated: false, completion: nil)
-//                navigationController?.pushViewController(createVideoVC, animated: true)
+        //        let createVideoVC = AddVideoViewController()
+        present(createVideoVC, animated: true, completion: nil)
+        //                navigationController?.pushViewController(createVideoVC, animated: true)
         
         print("add pressed")
         
     }
+    
+}
+
+class VideoModel{
+    
+    var albumId: String?
+    var senderId: String?
+    var description: String?
+    var id: String?
+    var title: String?
+    var url: String?
+    
+    //video dictionary
+    init(dictionary: NSDictionary){
+        guard let albumId = dictionary["albumId"] as? String else{
+            print("no album id")
+            return
+        }
+        self.albumId = albumId
+        senderId = dictionary["senderId"] as! String
+        description = dictionary["description"] as! String
+        id = dictionary["id"] as! String
+        url = dictionary["url"] as! String
+        
+        
+    }
+    
+    
     
 }

@@ -120,7 +120,10 @@ extension AddVideoViewController {
     
     func saveVideoHelper(videoData: NSData, userId: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void){
         
-        let storageRef = Storage.storage().reference(forURL: "gs://twideo-56273.appspot.com").child("videos").child(userId)
+        let ref = Database.database().reference().child("videos").childByAutoId()
+        let newVideoKey = ref.key!
+        
+        let storageRef = Storage.storage().reference(forURL: "gs://twideo-56273.appspot.com").child("videos").child(userId).child(newVideoKey)
         
         storageRef.putData(videoData as Data, metadata: nil) { (metadata, error) in
             if error != nil{
@@ -129,7 +132,7 @@ extension AddVideoViewController {
             }
             storageRef.downloadURL { (videoUrl, error) in
                 if error != nil{
-                    print("Error downloading URL: \(error?.localizedDescription)")
+                    print("Error downloading URL: \(error!.localizedDescription)")
                     return
                 }
                 
@@ -146,8 +149,7 @@ extension AddVideoViewController {
                     return
                 }
                 //"videos"
-                let ref = Database.database().reference().child("videos").childByAutoId()
-                let newVideoKey = ref.key!
+               
                 print(newVideoKey)
                 ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId])
                 
