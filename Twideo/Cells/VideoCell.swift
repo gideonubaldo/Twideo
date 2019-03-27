@@ -21,17 +21,18 @@ class VideoCell: UICollectionViewCell {
 		
 		self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 		
-		let videoURL = NSURL(string: videoModel.url!)
-		
-		player = AVPlayer(url: videoURL! as URL)
-		
+        player = AVPlayer(url: videoModel.url!)
+        playerController.showsPlaybackControls = false
+        
 		playerController.player = player
 		playerController.view.frame = videoPlayerView.frame
 		videoPlayerView.addSubview(playerController.view)
-		player.play()
 		
+        
+        
         descriptionLabel.text = videoModel.description
     }
 	
-	
+   
+
 }

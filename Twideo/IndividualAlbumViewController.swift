@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import AVKit
 class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     let segueIdentifier = "videoCellClicked"
@@ -16,8 +16,8 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
     var roundButton = UIButton()
     var isSharedAlbums = Bool()//if false, the round button will appear
     let reuseIdentifier = "VideoCell"
-	
-	var clickedVideoId: String?
+    var clickedIndex: Int?
+//    var clickedVideoId: String?
 	
     var videos = [VideoModel]()
     @IBOutlet weak var collectionView: UICollectionView!
@@ -51,8 +51,8 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
 		if segue.identifier == segueIdentifier{
 			if let vc = segue.destination as? VideoViewController{
 				
-				if let id = clickedVideoId{
-					vc.videoId = clickedVideoId
+				if let index = clickedIndex{
+					vc.videoModel = videos[index]
 				} else{
 					print("NO VIDEO ID")
 				}
@@ -91,7 +91,7 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
     }
     //selected cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		clickedVideoId = videos[indexPath.row].id
+		clickedIndex = indexPath.row
 		performSegue(withIdentifier: segueIdentifier, sender: nil)
         
     }
@@ -154,7 +154,7 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
             self.roundButton.setTitle("+", for: .normal)
             self.roundButton.titleLabel?.font = UIFont(name: (self.roundButton.titleLabel?.font.fontName)!, size: 45)
             self.roundButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-            //            self.roundButton.titleLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            //self.roundButton.titleLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             
             let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
             scaleAnimation.duration = 0.4
@@ -173,14 +173,11 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
         let createVideoVC = storyboard.instantiateViewController(withIdentifier: "CreateVideo") as! AddVideoViewController
         createVideoVC.album = album!
-        //        createAlbumVC.delegate = self
-        
-        //        let createVideoVC = AddVideoViewController()
         present(createVideoVC, animated: true, completion: nil)
-        //                navigationController?.pushViewController(createVideoVC, animated: true)
 		
         
     }
+    
     
 }
 
@@ -191,7 +188,7 @@ class VideoModel{
     var description: String?
     var id: String?
     var title: String?
-    var url: String?
+    var url: URL?
     
     //video dictionary
     init(dictionary: NSDictionary){
@@ -203,7 +200,13 @@ class VideoModel{
 		senderId = (dictionary["senderId"] as! String)
 		description = (dictionary["description"] as! String)
 		id = (dictionary["id"] as! String)
-		url = (dictionary["url"] as! String)
+        
+        if let videoURL = URL(string: dictionary["url"] as! String){
+            url = videoURL
+        }
+        
+        
+		
         
         
     }

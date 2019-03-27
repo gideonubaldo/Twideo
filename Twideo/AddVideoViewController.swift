@@ -99,10 +99,10 @@ extension AddVideoViewController {
 			print("NO UID")
 			return
 		}
-//        guard let videoData = NSData(contentsOf: albumUrl!) else {
-//            print("No video data")
-//            return
-//        }
+        guard let _ = localVideoURL else {
+            print("No video selected")
+            return
+        }
 
         //save to storage
         saveVideoHelper(url: localVideoURL!, userId: userId, onSuccess:{
@@ -113,7 +113,7 @@ extension AddVideoViewController {
             
         }, onError: {errorString in
             
-            print("ERRO")
+            print("ERROR")
             //ProgressHUD.showError(errorString!)
             
         })
