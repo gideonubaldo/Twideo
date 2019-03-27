@@ -14,4 +14,6 @@ pod 'FBSDKLoginKit'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'SideMenu'
+pod 'UICollectionViewParallaxCell'
+
 end

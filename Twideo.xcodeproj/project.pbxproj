@@ -98,13 +98,13 @@
 			children = (
 				94A5A508222DCDC50000821B /* AppDelegate.swift */,
 				B38584A02240B36700BA1A75 /* Authentication */,
+				B324144522471E490037FFA9 /* Cells */,
 				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
 				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
 				E2F40A01222FBF8000515593 /* MapViewController.swift */,
 				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
 				B34193ED22443A2F0027E7CA /* AddVideoViewController.swift */,
 				B34193E52242C2850027E7CA /* AddAlbumViewController.swift */,
-				B34193E7224361E30027E7CA /* AlbumTableViewCell.swift */,
 				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
 				B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
@@ -113,9 +113,17 @@
 				94A5A50F222DCDC70000821B /* Assets.xcassets */,
 				94A5A514222DCDC70000821B /* Info.plist */,
 				943B976F222DD49400001534 /* GoogleService-Info.plist */,
-				B30AC40122457CE9003970F6 /* VideoCell.swift */,
 			);
 			path = Twideo;
+			sourceTree = "<group>";
+		};
+		B324144522471E490037FFA9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B30AC40122457CE9003970F6 /* VideoCell.swift */,
+				B34193E7224361E30027E7CA /* AlbumTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B38584A02240B36700BA1A75 /* Authentication */ = {
@@ -245,6 +253,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/UICollectionViewParallaxCell/UICollectionViewParallaxCell.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -260,6 +269,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewParallaxCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -435,7 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S879Z9A2RC;
+				DEVELOPMENT_TEAM = 6WA6Y7KBQJ;
 				INFOPLIST_FILE = Twideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,7 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S879Z9A2RC;
+				DEVELOPMENT_TEAM = 6WA6Y7KBQJ;
 				INFOPLIST_FILE = Twideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

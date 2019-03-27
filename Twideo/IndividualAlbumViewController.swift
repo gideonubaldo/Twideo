@@ -8,14 +8,17 @@
 
 import UIKit
 import Firebase
+
 class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
-    
+    let segueIdentifier = "videoCellClicked"
     var album: NSDictionary?
     var roundButton = UIButton()
     var isSharedAlbums = Bool()//if false, the round button will appear
     let reuseIdentifier = "VideoCell"
-    
+	
+	var clickedVideoId: String?
+	
     var videos = [VideoModel]()
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
@@ -44,7 +47,21 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
             }
         }
     }
-    
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == segueIdentifier{
+			if let vc = segue.destination as? VideoViewController{
+				
+				if let id = clickedVideoId{
+					vc.videoId = clickedVideoId
+				} else{
+					print("NO VIDEO ID")
+				}
+			} else {
+				print("COULD NOT CAST TO VIDEOVC")
+			}
+			
+		}
+	}
     func loadVideos(){
         
         guard let albumId = album!["albumId"] as? String else{
@@ -54,9 +71,8 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         Database.database().reference().child("album-videos").child(albumId).observe(.childAdded) { (snapshot) in
             
             let videoId = snapshot.key
-            print(videoId)
             Database.database().reference().child("videos").child(videoId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
-                print("LOADING .. \(snapshot)")
+				
                 let videoDict = snapshot.value as! NSDictionary
                 let videoModel = VideoModel(dictionary: videoDict)
                 self.videos.append(videoModel)
@@ -75,7 +91,8 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
     }
     //selected cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+		clickedVideoId = videos[indexPath.row].id
+		performSegue(withIdentifier: segueIdentifier, sender: nil)
         
     }
     
@@ -89,21 +106,19 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
     
     //text to fill cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
+
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCell
-        
+
         cell.configureCell(videoModel: videos[indexPath.row])
-    
+
         // Configure the cell
         return cell
-        
-        
+
+
     }
-    
-    
-    
-    
+
+	
     
     
     func createFloatingButton() {
@@ -163,8 +178,7 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         //        let createVideoVC = AddVideoViewController()
         present(createVideoVC, animated: true, completion: nil)
         //                navigationController?.pushViewController(createVideoVC, animated: true)
-        
-        print("add pressed")
+		
         
     }
     
@@ -186,10 +200,10 @@ class VideoModel{
             return
         }
         self.albumId = albumId
-        senderId = dictionary["senderId"] as! String
-        description = dictionary["description"] as! String
-        id = dictionary["id"] as! String
-        url = dictionary["url"] as! String
+		senderId = (dictionary["senderId"] as! String)
+		description = (dictionary["description"] as! String)
+		id = (dictionary["id"] as! String)
+		url = (dictionary["url"] as! String)
         
         
     }

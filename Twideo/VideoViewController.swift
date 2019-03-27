@@ -18,35 +18,34 @@ class VideoViewController: UIViewController {
     
     var player = AVPlayer()
     var playerController = AVPlayerViewController()
-    var videoId: String?{
-        didSet{
-            print("HERE")
-            Database.database().reference().child("videos").child(videoId!).observe(.value, with: { (snapshot) in
-                
-                let snap = snapshot.value as! NSDictionary
-                
-                print(snap["description"])
-                
-                self.descriptionLabel.text = snap["description"] as! String
-                
-                self.videoUrl = snap["url"] as! String
-                
-                self.playVideo()
-            })
-        }
-        
-    }
+    var videoId: String?
     var videoUrl: String?
     var videoDescription: String?
     override func viewDidLoad() {
-       self.videoId = "deleteThisVideo"
+		configureView()
     }
-    
+	
+	
+	func configureView(){
+		Database.database().reference().child("videos").child(videoId!).observe(.value, with: { (snapshot) in
+			
+			let snap = snapshot.value as! NSDictionary
+			
+			print(snap["description"] as Any)
+			
+			self.descriptionLabel.text = (snap["description"] as! String)
+			
+			self.videoUrl = (snap["url"] as! String)
+			
+			self.playVideo()
+		})
+	}
     func playVideo() {
         
         
         
         let videoURL = NSURL(string: self.videoUrl!)
+		print("URL \(videoURL)")
         player = AVPlayer(url: videoURL! as URL)
         playerController.player = player
         self.addChild(playerController)

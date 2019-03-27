@@ -17,12 +17,12 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
     var player = AVPlayer()
     let playerController = AVPlayerViewController()
     var album = NSDictionary()
-    var albumUrl: URL?
+    var localVideoURL: URL?
     
     
     @IBOutlet weak var descriptionTextField: UITextField!
     override func viewDidLoad() {
-        print("ADD VIDEO LOADED \(album)")
+		
         super.viewDidLoad()
         playVideo(url: nil)
         
@@ -62,7 +62,7 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
         
         if let video = info[UIImagePickerController.InfoKey.mediaURL] as? URL{
             
-            albumUrl = video
+            localVideoURL = video
             playVideo(url: video)
             
             
@@ -76,7 +76,7 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
     func playVideo(url: URL?){
         
         if let url = url{
-            
+		
             player = AVPlayer(url: url)
             
         } else {
@@ -95,14 +95,17 @@ extension AddVideoViewController {
     
     func saveVideo(){
         
-        guard let userId = Auth.auth().currentUser?.uid else{print("NO UID");return}
-        guard let videoData = NSData(contentsOf: albumUrl!) else {
-            print("No video data")
-            return
-        }
+        guard let userId = Auth.auth().currentUser?.uid else {
+			print("NO UID")
+			return
+		}
+//        guard let videoData = NSData(contentsOf: albumUrl!) else {
+//            print("No video data")
+//            return
+//        }
 
         //save to storage
-        saveVideoHelper(videoData: videoData, userId: userId, onSuccess:{
+        saveVideoHelper(url: localVideoURL!, userId: userId, onSuccess:{
             
             print("Success")
             //ProgressHUD.showSuccess("Success")
@@ -118,18 +121,20 @@ extension AddVideoViewController {
         
     }
     
-    func saveVideoHelper(videoData: NSData, userId: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void){
+    func saveVideoHelper(url: URL, userId: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void){
         
         let ref = Database.database().reference().child("videos").childByAutoId()
         let newVideoKey = ref.key!
         
         let storageRef = Storage.storage().reference(forURL: "gs://twideo-56273.appspot.com").child("videos").child(userId).child(newVideoKey)
-        
-        storageRef.putData(videoData as Data, metadata: nil) { (metadata, error) in
+		
+		
+		storageRef.putFile(from: url, metadata: nil) { (metadata, error) in
+			
             if error != nil{
                 onError(error?.localizedDescription)
                 return
-            }
+			}
             storageRef.downloadURL { (videoUrl, error) in
                 if error != nil{
                     print("Error downloading URL: \(error!.localizedDescription)")
