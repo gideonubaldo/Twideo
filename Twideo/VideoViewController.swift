@@ -22,6 +22,8 @@ class VideoViewController: UIViewController {
     var videoUrl: String?
     var videoDescription: String?
     override func viewDidLoad() {
+		
+		//configureview calls play video
 		configureView()
     }
 	
@@ -40,6 +42,7 @@ class VideoViewController: UIViewController {
 			self.playVideo()
 		})
 	}
+	
     func playVideo() {
         
         
