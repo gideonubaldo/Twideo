@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import AVKit
 import Firebase
-
+import ProgressHUD
 class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var videoPlayerView: UIView!
+    
     var player = AVPlayer()
     let playerController = AVPlayerViewController()
     var album = NSDictionary()
@@ -52,14 +53,10 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
         
         present(pickerController, animated: true, completion: nil)
         
-        
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        
-        
+        print("returnnnnn")
         if let video = info[UIImagePickerController.InfoKey.mediaURL] as? URL{
             
             localVideoURL = video
@@ -70,7 +67,7 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
             playVideo(url: nil)
             print("ERROR")
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)//dismiss image picker after cancel or chosen video
     }
     
     func playVideo(url: URL?){
@@ -92,9 +89,10 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
 //save video to database function
 extension AddVideoViewController {
     
-    
     func saveVideo(){
         
+        ProgressHUD.show("Saving video. This might take a while...")
+        print("STARTED")
         guard let userId = Auth.auth().currentUser?.uid else {
 			print("NO UID")
 			return
@@ -103,16 +101,17 @@ extension AddVideoViewController {
             print("No video selected")
             return
         }
-
+        
         //save to storage
         saveVideoHelper(url: localVideoURL!, userId: userId, onSuccess:{
             
             print("Success")
+            ProgressHUD.showSuccess()
             //ProgressHUD.showSuccess("Success")
-            self.performSegue(withIdentifier: "signUpToDaySelect", sender: nil)
+//            self.performSegue(withIdentifier: "signUpToDaySelect", sender: nil)
             
         }, onError: {errorString in
-            
+            ProgressHUD.showError()
             print("ERROR")
             //ProgressHUD.showError(errorString!)
             
@@ -160,6 +159,8 @@ extension AddVideoViewController {
                 
                 //"album-videos"
                 Database.database().reference().child("album-videos").child(albumId).child(newVideoKey).setValue(1)
+                
+                onSuccess()
             }
             
             

@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "ProgressHUD.h"
 
-FOUNDATION_EXPORT double UICollectionViewParallaxCellVersionNumber;
-FOUNDATION_EXPORT const unsigned char UICollectionViewParallaxCellVersionString[];
+FOUNDATION_EXPORT double ProgressHUDVersionNumber;
+FOUNDATION_EXPORT const unsigned char ProgressHUDVersionString[];
 
