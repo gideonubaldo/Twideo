@@ -14,6 +14,7 @@ import FirebaseDatabase
 class VideoViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var playerControllerView: UIView!
     
     
     var player = AVPlayer()
@@ -22,14 +23,20 @@ class VideoViewController: UIViewController {
     
     override func viewDidLoad() {
 		
-		//configureview calls play video
+		//configureview calls playVideo()
         if let _ = self.videoModel{
             configureView()
         }
 		
     }
 	
-	
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewPhotoLocation"{
+            if let vc = segue.destination as? MapViewController{
+                vc.videoModel = videoModel!
+            }
+        }
+    }
 	func configureView(){
         
         self.descriptionLabel.text = videoModel?.description
@@ -39,19 +46,23 @@ class VideoViewController: UIViewController {
 	
     func playVideo() {
         
+        let topHalf = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height/2)
+        
+        playerControllerView.frame = topHalf
         
         if let _ = videoModel!.url {
+            
             player = AVPlayer(url: videoModel!.url!)
             playerController.player = player
             self.addChild(playerController)
             
-            let topHalf = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height/2)
+            
             // Add your view Frame
             playerController.view.frame = topHalf
-            
-            // Add subview in your view
-            self.view.addSubview(playerController.view)
-            
+            playerControllerView.addSubview(playerController.view)
+//            // Add subview in your view
+//            self.view.addSubview(playerController.view)
+//
             player.play()
         }
         

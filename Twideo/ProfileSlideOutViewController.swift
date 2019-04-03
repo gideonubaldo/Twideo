@@ -9,14 +9,19 @@
 import Foundation
 import UIKit
 import SideMenu
+import FBSDKCoreKit
+import FacebookCore
 class ProfileSlideOutViewController: UIViewController{
     
     var tableViewController: AlbumsViewController?
+    @IBOutlet weak var profileImage: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-       
         
+        super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+       
+        profileImage.setImage(appDelegate.userImage, for: .normal)
     }
     
     @IBAction func myAlbumsPressed(_ sender: Any) {
@@ -30,7 +35,7 @@ class ProfileSlideOutViewController: UIViewController{
         tableViewController!.isSharedAlbums = true//will cause add button to disappear
         tableViewController!.selectedAlbums = tableViewController!.sharedAlbums
         
-    
+        
     }
     
     

@@ -269,33 +269,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afq-SC-FdS">
-                                <rect key="frame" x="69" y="375" width="236" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUq-wp-dum">
+                                <rect key="frame" x="70.5" y="449" width="234" height="30"/>
+                                <state key="normal" title="View the location photo was taken"/>
+                                <connections>
+                                    <segue destination="YGx-YD-uod" kind="show" identifier="viewPhotoLocation" id="JBK-8P-3DA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYW-qH-eMo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="303"/>
+                                <color key="backgroundColor" red="0.26028761267662048" green="0.99602788686752319" blue="0.02000766433775425" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afq-SC-FdS">
+                                <rect key="frame" x="16" y="391" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUq-wp-dum">
-                                <rect key="frame" x="70" y="449" width="234" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View the location photo was taken"/>
-                                <connections>
-                                    <segue destination="YGx-YD-uod" kind="show" id="JBK-8P-3DA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iLT-LF-Jim" firstAttribute="trailing" secondItem="afq-SC-FdS" secondAttribute="trailing" constant="16" id="1T7-W4-jdd"/>
+                            <constraint firstItem="hYW-qH-eMo" firstAttribute="leading" secondItem="iLT-LF-Jim" secondAttribute="leading" id="91q-SQ-BCT"/>
+                            <constraint firstItem="iLT-LF-Jim" firstAttribute="bottom" secondItem="gUq-wp-dum" secondAttribute="bottom" constant="188" id="Ayd-hT-8dr"/>
+                            <constraint firstItem="hYW-qH-eMo" firstAttribute="trailing" secondItem="iLT-LF-Jim" secondAttribute="trailing" id="GBK-cC-yBR"/>
+                            <constraint firstItem="gUq-wp-dum" firstAttribute="centerX" secondItem="Dqq-3b-Iyc" secondAttribute="centerX" id="OD4-CL-fub"/>
+                            <constraint firstItem="gUq-wp-dum" firstAttribute="top" secondItem="afq-SC-FdS" secondAttribute="bottom" constant="37" id="T7x-1S-ZVI"/>
+                            <constraint firstItem="afq-SC-FdS" firstAttribute="leading" secondItem="iLT-LF-Jim" secondAttribute="leading" constant="16" id="WSd-Av-Gl2"/>
+                            <constraint firstItem="afq-SC-FdS" firstAttribute="top" secondItem="hYW-qH-eMo" secondAttribute="bottom" constant="24" id="ouG-NI-opV"/>
+                            <constraint firstItem="hYW-qH-eMo" firstAttribute="top" secondItem="iLT-LF-Jim" secondAttribute="top" id="wuW-OG-QSr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iLT-LF-Jim"/>
                     </view>
                     <navigationItem key="navigationItem" title="Video" id="9Eb-hm-Sbc"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="afq-SC-FdS" id="vx2-py-o4N"/>
+                        <outlet property="playerControllerView" destination="hYW-qH-eMo" id="vkl-kY-hE2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzZ-jX-Jql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4532" y="967"/>
+            <point key="canvasLocation" x="4532" y="966.56671664167925"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3wS-9g-4Pm">
@@ -657,13 +671,6 @@
                                     <action selector="myAlbumsPressed:" destination="AcV-2y-pe9" eventType="touchUpInside" id="akI-FE-BfF"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileplacer" translatesAutoresizingMaskIntoConstraints="NO" id="dmW-gf-jeh">
-                                <rect key="frame" x="108" y="106" width="159" height="122"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="122" id="6om-Hb-YLF"/>
-                                    <constraint firstAttribute="width" constant="159" id="e5d-RR-UkS"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBi-K5-hZs">
                                 <rect key="frame" x="135.5" y="405" width="104" height="30"/>
                                 <constraints>
@@ -674,23 +681,37 @@
                                     <action selector="sharedAlbumsPressed:" destination="AcV-2y-pe9" eventType="touchUpInside" id="45l-jS-ymc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2A6-Qx-s9i">
+                                <rect key="frame" x="108.5" y="101" width="158" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="158" id="93H-RP-OAw"/>
+                                    <constraint firstAttribute="height" constant="122" id="r2s-sk-KIu"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="profileplacer"/>
+                                <connections>
+                                    <segue destination="ARN-53-zkF" kind="show" id="zqy-Cx-ui2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dmW-gf-jeh" firstAttribute="top" secondItem="Y6t-yC-NWI" secondAttribute="top" constant="42" id="3Yj-bK-Jd0"/>
-                            <constraint firstItem="dmW-gf-jeh" firstAttribute="centerX" secondItem="m3Y-bc-V3L" secondAttribute="centerX" id="GGV-hb-VmN"/>
+                            <constraint firstItem="2A6-Qx-s9i" firstAttribute="top" secondItem="Y6t-yC-NWI" secondAttribute="top" constant="37" id="F8s-fe-qTY"/>
+                            <constraint firstItem="Hp6-fu-Z70" firstAttribute="top" secondItem="2A6-Qx-s9i" secondAttribute="bottom" constant="95" id="Nfs-4A-fzb"/>
                             <constraint firstItem="iBi-K5-hZs" firstAttribute="top" secondItem="Hp6-fu-Z70" secondAttribute="bottom" constant="57" id="S3F-vy-nXr"/>
                             <constraint firstItem="iBi-K5-hZs" firstAttribute="centerX" secondItem="m3Y-bc-V3L" secondAttribute="centerX" id="WAf-Je-6vA"/>
                             <constraint firstItem="Hp6-fu-Z70" firstAttribute="centerX" secondItem="m3Y-bc-V3L" secondAttribute="centerX" id="bas-TZ-dJL"/>
-                            <constraint firstItem="Hp6-fu-Z70" firstAttribute="top" secondItem="dmW-gf-jeh" secondAttribute="bottom" constant="90" id="f52-XA-0aJ"/>
+                            <constraint firstItem="2A6-Qx-s9i" firstAttribute="centerX" secondItem="m3Y-bc-V3L" secondAttribute="centerX" id="jKR-Gd-gL4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y6t-yC-NWI"/>
                     </view>
                     <navigationItem key="navigationItem" id="gg8-OJ-WCZ"/>
+                    <connections>
+                        <outlet property="profileImage" destination="2A6-Qx-s9i" id="ltr-42-XR9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pE-Zp-KtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785" y="968"/>
+            <point key="canvasLocation" x="784.79999999999995" y="967.4662668665668"/>
         </scene>
     </scenes>
     <resources>

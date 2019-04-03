@@ -189,7 +189,8 @@ class VideoModel{
     var id: String?
     var title: String?
     var url: URL?
-    
+    var latitude: Double?
+    var longitude: Double?
     //video dictionary
     init(dictionary: NSDictionary){
         guard let albumId = dictionary["albumId"] as? String else{
@@ -204,6 +205,9 @@ class VideoModel{
         if let videoURL = URL(string: dictionary["url"] as! String){
             url = videoURL
         }
+        
+        latitude = (dictionary["latitude"] as! Double)
+        longitude = (dictionary["longitude"] as! Double)
         
         
 		

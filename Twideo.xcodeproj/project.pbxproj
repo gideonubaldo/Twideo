@@ -21,6 +21,8 @@
 		B34193E62242C2850027E7CA /* AddAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34193E52242C2850027E7CA /* AddAlbumViewController.swift */; };
 		B34193E8224361E30027E7CA /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34193E7224361E30027E7CA /* AlbumTableViewCell.swift */; };
 		B34193EE22443A2F0027E7CA /* AddVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34193ED22443A2F0027E7CA /* AddVideoViewController.swift */; };
+		B35E2FDD22543120001D791E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E2FDC22543120001D791E /* CoreLocation.framework */; };
+		B35E2FDF225437B6001D791E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35E2FDE225437B6001D791E /* MapKit.framework */; };
 		B38584A22240B41400BA1A75 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A12240B41400BA1A75 /* AlbumsViewController.swift */; };
 		B38584A42240B45E00BA1A75 /* IndividualAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */; };
 		B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */; };
@@ -47,6 +49,8 @@
 		B34193E52242C2850027E7CA /* AddAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlbumViewController.swift; sourceTree = "<group>"; };
 		B34193E7224361E30027E7CA /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		B34193ED22443A2F0027E7CA /* AddVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVideoViewController.swift; sourceTree = "<group>"; };
+		B35E2FDC22543120001D791E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B35E2FDE225437B6001D791E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B38584A12240B41400BA1A75 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAlbumViewController.swift; sourceTree = "<group>"; };
 		B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSlideOutViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35E2FDF225437B6001D791E /* MapKit.framework in Frameworks */,
+				B35E2FDD22543120001D791E /* CoreLocation.framework in Frameworks */,
 				A8C2BF88471461872BCAAE9F /* Pods_Twideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +75,8 @@
 		073FD69A1938627711090048 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B35E2FDE225437B6001D791E /* MapKit.framework */,
+				B35E2FDC22543120001D791E /* CoreLocation.framework */,
 				7E728272B546CAAD669353AC /* Pods_Twideo.framework */,
 			);
 			name = Frameworks;

@@ -9,19 +9,39 @@
 import UIKit
 import Firebase
 import FacebookCore
+import FBSDKCoreKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var userImage: UIImage?
+    func getUserImage(){
+        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, picture.type(large)"])
+        let _ = request?.start(completionHandler: { (connection, result, error) in
+            guard let userInfo = result as? [String: Any] else { return } //handle the error
+            
+            //The url is nested 3 layers deep into the result so it's pretty messy
+            if let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                //Download image from imageURL
+                do {
+                    let data = try Data(contentsOf: URL(string: imageURL)!)
+                    
+                    self.userImage = UIImage(data: data)
+                }
+                catch{
+                    print("Error getting image from fb")
+                    
+                }
+            }
+        })
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
+        getUserImage()
         return true
     }
     

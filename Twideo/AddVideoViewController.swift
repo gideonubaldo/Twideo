@@ -11,7 +11,9 @@ import UIKit
 import AVKit
 import Firebase
 import ProgressHUD
-class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+import CoreLocation
+
+class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var videoPlayerView: UIView!
     
@@ -19,16 +21,56 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
     let playerController = AVPlayerViewController()
     var album = NSDictionary()
     var localVideoURL: URL?
+    let manager = CLLocationManager()
+    
+    var latitude: Double?
+    var longitude: Double?
     
     
     @IBOutlet weak var descriptionTextField: UITextField!
     override func viewDidLoad() {
 		
         super.viewDidLoad()
+        
+        self.manager.requestAlwaysAuthorization()
+        self.manager.requestWhenInUseAuthorization()
+        
+        
+        
+        if CLLocationManager.locationServicesEnabled() {
+            print("ENABLED")
+            manager.delegate = self
+
+            manager.desiredAccuracy = kCLLocationAccuracyBest
+
+            manager.startUpdatingLocation()
+//            manager.requestLocation()
+
+        } else {
+            print("IDK")
+        }
+        
+        
+        
         playVideo(url: nil)
         
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locationValue : CLLocationCoordinate2D = manager.location?.coordinate else {
+            print("Error finding lcoation")
+            return
+        }
+        print("DID UPDATE LCOATON")
+        print(locationValue.latitude)
+        print(locationValue.longitude)
+        self.latitude = locationValue.latitude
+        self.longitude = locationValue.longitude
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -86,8 +128,10 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 }
 
-//save video to database function
-extension AddVideoViewController {
+//save video to database function and location
+extension AddVideoViewController{
+    
+    
     
     func saveVideo(){
         
@@ -140,22 +184,36 @@ extension AddVideoViewController {
                     return
                 }
                 
-                guard let description = self.descriptionTextField.text else { print("NO description");return}
+                guard let description = self.descriptionTextField.text else { print("NO description")
+                    onError(error?.localizedDescription)
+                    return}
                 
                 
                 guard let url = videoUrl?.absoluteString else{
                     print("no url")
+                    onError(error?.localizedDescription)
                     return
                 }
                 
                 guard let albumId = self.album["albumId"] as? String else{
                     print("NO ALBUM ID")
+                    onError(error?.localizedDescription)
+                    return
+                }
+                guard let lat = self.latitude else{
+                    print("NO LAT")
+                    onError(error?.localizedDescription)
+                    return
+                }
+                guard let long = self.longitude else{
+                    print("NO LONG")
+                    onError(error?.localizedDescription)
                     return
                 }
                 //"videos"
                
                 print(newVideoKey)
-                ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId])
+                ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId, "latitude": lat, "longitude": long])
                 
                 //"album-videos"
                 Database.database().reference().child("album-videos").child(albumId).child(newVideoKey).setValue(1)
