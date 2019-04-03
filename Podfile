@@ -15,4 +15,5 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'SideMenu'
 pod 'ProgressHUD'
+pod 'SwipeCellKit'
 end

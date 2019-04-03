@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class AlbumTableViewCell: UITableViewCell {
+import SwipeCellKit
+class AlbumTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     

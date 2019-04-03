@@ -93,6 +93,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - ProgressHUD (2.60)
   - SideMenu (5.0.3)
+  - SwipeCellKit (2.5.1)
 
 DEPENDENCIES:
   - FacebookCore
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - ProgressHUD
   - SideMenu
+  - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -127,6 +129,7 @@ SPEC REPOS:
     - nanopb
     - ProgressHUD
     - SideMenu
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -149,7 +152,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
 
-PODFILE CHECKSUM: 4428e1425cedab833755f5f2af44bf878e173e2e
+PODFILE CHECKSUM: 50451d6cfc831ad401e27ee5ad1d357a08ac4355
 
 COCOAPODS: 1.5.3

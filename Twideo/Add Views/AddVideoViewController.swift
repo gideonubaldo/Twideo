@@ -28,6 +28,8 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var notesTextField: UITextField!
+    
     override func viewDidLoad() {
 		
         super.viewDidLoad()
@@ -215,8 +217,12 @@ extension AddVideoViewController{
                 let asset = AVURLAsset(url: localUrl)
                 let durationInSeconds = asset.duration.seconds
                 print("\(durationInSeconds) durationInSeconds")
-                let notes = ""
                 
+                guard let notes = self.notesTextField.text else {
+                    print("NO notes")
+                    onError(error?.localizedDescription)
+                    return
+                }
                 ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId, "latitude": lat, "longitude": long, "fileType": fileType, "notes": notes, "duration": durationInSeconds])
                 
                 //"album-videos"

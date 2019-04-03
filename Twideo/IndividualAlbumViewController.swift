@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import AVKit
-class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     let segueIdentifier = "videoCellClicked"
     var album: NSDictionary?
@@ -21,6 +21,12 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
 	
     var videos = [VideoModel]()
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    
+    
+    private let itemsPerRow: CGFloat = 3
+    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     override func viewDidLoad() {
         
         loadVideos()
@@ -111,15 +117,40 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCell
 
         cell.configureCell(videoModel: videos[indexPath.row])
-
+        
         // Configure the cell
         return cell
 
 
     }
 
-	
     
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        print("SIZE FOR ITEM AT")
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+        
+    }
+	
+    //3
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        print("INSET FOR SECTION AT")
+        return sectionInsets
+    }
+    
+    // 4
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        print("MINIMUMLINE SPACING")
+        return sectionInsets.left
+    }
     
     func createFloatingButton() {
         

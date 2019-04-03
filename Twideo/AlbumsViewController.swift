@@ -9,8 +9,11 @@ import UIKit
 import FBSDKCoreKit
 import SideMenu
 import Firebase
-
-class AlbumsViewController: UITableViewController{
+import SwipeCellKit
+import ProgressHUD
+class AlbumsViewController: UITableViewController, SwipeTableViewCellDelegate{
+    
+    
     
     
     //floating button bottom right, clicked to add album
@@ -41,7 +44,7 @@ class AlbumsViewController: UITableViewController{
         if isSharedAlbums == false{
             createFloatingButton()
         }
-        
+        tableView.reloadData()
         
         
     }
@@ -72,6 +75,15 @@ class AlbumsViewController: UITableViewController{
                 self.selectedAlbums = self.myAlbums
                 
             })
+        }
+        
+        Database.database().reference().child("albums").observe(.childChanged) { (snapshot) in
+            
+            self.tableView.reloadData()
+            
+            
+            
+            
         }
         
         
@@ -113,6 +125,7 @@ class AlbumsViewController: UITableViewController{
         //
         //            }
         //        })
+        
         
         let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
         let createAlbumVC = storyboard.instantiateViewController(withIdentifier: "CreateAlbum") as! AddAlbumViewController
@@ -181,6 +194,8 @@ class AlbumsViewController: UITableViewController{
         
         cell.titleLabel?.text = "\(selectedAlbums[indexPath.row]["title"]!)"
         
+        cell.delegate = self
+        
         return cell
         
     }
@@ -189,5 +204,83 @@ class AlbumsViewController: UITableViewController{
         return selectedAlbums.count
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        
+        guard orientation == .right else { return nil }
+        
+        guard let currentUid = Auth.auth().currentUser?.uid else {return nil}
+        
+        if selectedAlbums[indexPath.row]["creatorUid"] as! String != currentUid {return nil}
+        
+        let deleteAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
+            
+            print("DELETE PRESSED")
+            //notification
+            let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this album?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Default action"), style: .default, handler: { _ in
+                self.deleteAlbum(at: indexPath)}))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")}))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        deleteAction.image = UIImage(named: "delete")
+        deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        deleteAction.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        
+        
+        let editAction = SwipeAction(style: .default, title: "Edit") { (action, indexPath) in
+            
+            print("EDIT PRESSED")
+            
+            
+            let albumId = self.selectedAlbums[indexPath.row]["albumId"] as! String
+            
+            let albumRef = Database.database().reference().child("albums").child(albumId)
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
+            let editAlbumVC = storyboard.instantiateViewController(withIdentifier: "EditAlbum") as! EditAlbumViewController
+            editAlbumVC.albumModel = self.selectedAlbums[indexPath.row]
+            self.navigationController?.pushViewController(editAlbumVC, animated: true)
+            
+        }
+        editAction.image = UIImage(named: "edit")
+        editAction.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        editAction.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        
+        
+        
+        let shareAction = SwipeAction(style: .default, title: "Share") { (action, indexPath) in
+            
+            print("SHARE PRESSED")
+        }
+        shareAction.image = UIImage(named: "share")
+        shareAction.backgroundColor = #colorLiteral(red: 0.8600481153, green: 0.8700754046, blue: 0.8765537739, alpha: 1)
+        shareAction.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        return [deleteAction, editAction, shareAction]
+    }
+    
+    func deleteAlbum(at indexPath: IndexPath){
+        let albumId = selectedAlbums[indexPath.row]["albumId"] as! String
+        
+        Database.database().reference().child("albums").child(albumId).removeValue()
+        Database.database().reference().child("album-videos").child(albumId).removeValue()
+        Database.database().reference().child("user-albums").child((Auth.auth().currentUser?.uid)!).child("albums").child(albumId).removeValue()
+        
+        (self.tableView.cellForRow(at: indexPath) as! AlbumTableViewCell).hideSwipe(animated: false)
+        self.selectedAlbums.remove(at: indexPath.row)
+        
+        
+        
+    }
+    
 }
 

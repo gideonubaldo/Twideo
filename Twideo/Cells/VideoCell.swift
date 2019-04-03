@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVKit
+
 class VideoCell: UICollectionViewCell {
     
 	@IBOutlet weak var videoPlayerView: UIView!
@@ -20,7 +21,7 @@ class VideoCell: UICollectionViewCell {
     func configureCell(videoModel: VideoModel){
 		
 		self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-		
+        
         player = AVPlayer(url: videoModel.url!)
         playerController.showsPlaybackControls = false
         

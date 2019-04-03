@@ -15,6 +15,7 @@
 		94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A511222DCDC70000821B /* LaunchScreen.storyboard */; };
 		A8C2BF88471461872BCAAE9F /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E728272B546CAAD669353AC /* Pods_Twideo.framework */; };
 		B30AC40222457CE9003970F6 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30AC40122457CE9003970F6 /* VideoCell.swift */; };
+		B318412E2255363200908EFE /* EditAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318412D2255363200908EFE /* EditAlbumViewController.swift */; };
 		B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */; };
 		B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33F621E222F383A00CA0B95 /* VideoViewController.swift */; };
 		B34193E42242C04B0027E7CA /* AddViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34193E32242C04B0027E7CA /* AddViews.storyboard */; };
@@ -43,6 +44,7 @@
 		94A5A512222DCDC70000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A5A514222DCDC70000821B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B30AC40122457CE9003970F6 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		B318412D2255363200908EFE /* EditAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlbumViewController.swift; sourceTree = "<group>"; };
 		B31A4DA4222E18EC00EAEF77 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginVC.swift; sourceTree = "<group>"; };
 		B33F621E222F383A00CA0B95 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		B34193E32242C04B0027E7CA /* AddViews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddViews.storyboard; sourceTree = "<group>"; };
@@ -106,12 +108,12 @@
 				94A5A508222DCDC50000821B /* AppDelegate.swift */,
 				B38584A02240B36700BA1A75 /* Authentication */,
 				B324144522471E490037FFA9 /* Cells */,
+				B318412B2255360600908EFE /* Add Views */,
+				B318412C2255361900908EFE /* Edit Views */,
 				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
 				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
 				E2F40A01222FBF8000515593 /* MapViewController.swift */,
 				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
-				B34193ED22443A2F0027E7CA /* AddVideoViewController.swift */,
-				B34193E52242C2850027E7CA /* AddAlbumViewController.swift */,
 				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
 				B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
@@ -122,6 +124,23 @@
 				943B976F222DD49400001534 /* GoogleService-Info.plist */,
 			);
 			path = Twideo;
+			sourceTree = "<group>";
+		};
+		B318412B2255360600908EFE /* Add Views */ = {
+			isa = PBXGroup;
+			children = (
+				B34193ED22443A2F0027E7CA /* AddVideoViewController.swift */,
+				B34193E52242C2850027E7CA /* AddAlbumViewController.swift */,
+			);
+			path = "Add Views";
+			sourceTree = "<group>";
+		};
+		B318412C2255361900908EFE /* Edit Views */ = {
+			isa = PBXGroup;
+			children = (
+				B318412D2255363200908EFE /* EditAlbumViewController.swift */,
+			);
+			path = "Edit Views";
 			sourceTree = "<group>";
 		};
 		B324144522471E490037FFA9 /* Cells */ = {
@@ -262,6 +281,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -278,6 +298,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -295,6 +316,7 @@
 			files = (
 				B38584A22240B41400BA1A75 /* AlbumsViewController.swift in Sources */,
 				B31A4DA5222E18EC00EAEF77 /* FacebookLoginVC.swift in Sources */,
+				B318412E2255363200908EFE /* EditAlbumViewController.swift in Sources */,
 				E2F40A00222F425400515593 /* CreateAccount.swift in Sources */,
 				B34193E8224361E30027E7CA /* AlbumTableViewCell.swift in Sources */,
 				E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */,
