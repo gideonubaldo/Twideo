@@ -271,13 +271,38 @@ class AlbumsViewController: UITableViewController, SwipeTableViewCellDelegate{
     func deleteAlbum(at indexPath: IndexPath){
         let albumId = selectedAlbums[indexPath.row]["albumId"] as! String
         
-        Database.database().reference().child("albums").child(albumId).removeValue()
-        Database.database().reference().child("album-videos").child(albumId).removeValue()
-        Database.database().reference().child("user-albums").child((Auth.auth().currentUser?.uid)!).child("albums").child(albumId).removeValue()
         
         (self.tableView.cellForRow(at: indexPath) as! AlbumTableViewCell).hideSwipe(animated: false)
         self.selectedAlbums.remove(at: indexPath.row)
         
+        Storage.storage().reference().child("videos").child(albumId).delete(completion: nil)
+        
+        var videoIdsToDelete = [String]()
+        
+        Database.database().reference().child("videos").observeSingleEvent(of: .value) { (snapshot) in
+           
+            let videoDict = snapshot.value as! [String: NSDictionary]
+            
+            for (_, video) in videoDict {
+                
+                videoIdsToDelete.append(video["id"] as! String)
+                
+            }
+            
+            for i in 0..<videoIdsToDelete.count{
+                
+                 Database.database().reference().child("videos").child(videoIdsToDelete[i]).removeValue()
+                
+            }
+            
+            
+        }
+    
+        
+        
+        Database.database().reference().child("albums").child(albumId).removeValue()
+        Database.database().reference().child("album-videos").child(albumId).removeValue()
+        Database.database().reference().child("user-albums").child((Auth.auth().currentUser?.uid)!).child("albums").child(albumId).removeValue()
         
         
     }

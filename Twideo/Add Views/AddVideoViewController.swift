@@ -171,7 +171,7 @@ extension AddVideoViewController{
         let ref = Database.database().reference().child("videos").childByAutoId()
         let newVideoKey = ref.key!
         
-        let storageRef = Storage.storage().reference(forURL: "gs://twideo-56273.appspot.com").child("videos").child(userId).child(newVideoKey)
+        let storageRef = Storage.storage().reference(forURL: "gs://twideo-56273.appspot.com").child("albums").child(self.album["albumId"] as! String).child(newVideoKey)
 		
 		
 		storageRef.putFile(from: localUrl, metadata: nil) { (metadata, error) in
