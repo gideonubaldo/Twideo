@@ -191,6 +191,10 @@ class VideoModel{
     var url: URL?
     var latitude: Double?
     var longitude: Double?
+    var fileType: String?
+    var notes: String?
+    var duration: Double?
+    
     //video dictionary
     init(dictionary: NSDictionary){
         guard let albumId = dictionary["albumId"] as? String else{
@@ -208,7 +212,9 @@ class VideoModel{
         
         latitude = (dictionary["latitude"] as! Double)
         longitude = (dictionary["longitude"] as! Double)
-        
+        fileType = (dictionary["fileType"] as! String)
+        notes = (dictionary["notes"] as! String)
+        duration = (dictionary["duration"] as! Double)
         
 		
         

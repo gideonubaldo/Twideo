@@ -12,7 +12,11 @@ import AVKit
 import FirebaseStorage
 import FirebaseDatabase
 class VideoViewController: UIViewController {
+
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var formatLabel: UILabel!
+    @IBOutlet weak var lengthLabel: UILabel!
     
     @IBOutlet weak var playerControllerView: UIView!
     
@@ -39,7 +43,11 @@ class VideoViewController: UIViewController {
     }
 	func configureView(){
         
-        self.descriptionLabel.text = videoModel?.description
+        self.descriptionLabel.text = "Description: \(videoModel!.description!)"
+        self.notesLabel.text = "Notes: \(videoModel!.notes!)"
+        self.formatLabel.text = "Format: \(videoModel!.fileType!)"
+        self.lengthLabel.text = "Length: \(videoModel!.duration!)"
+    
         self.playVideo()
         
 	}

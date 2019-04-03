@@ -147,7 +147,7 @@ extension AddVideoViewController{
         }
         
         //save to storage
-        saveVideoHelper(url: localVideoURL!, userId: userId, onSuccess:{
+        saveVideoHelper(localUrl: localVideoURL!, userId: userId, onSuccess:{
             
             print("Success")
             ProgressHUD.showSuccess()
@@ -164,7 +164,7 @@ extension AddVideoViewController{
         
     }
     
-    func saveVideoHelper(url: URL, userId: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void){
+    func saveVideoHelper(localUrl: URL, userId: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void){
         
         let ref = Database.database().reference().child("videos").childByAutoId()
         let newVideoKey = ref.key!
@@ -172,7 +172,7 @@ extension AddVideoViewController{
         let storageRef = Storage.storage().reference(forURL: "gs://twideo-56273.appspot.com").child("videos").child(userId).child(newVideoKey)
 		
 		
-		storageRef.putFile(from: url, metadata: nil) { (metadata, error) in
+		storageRef.putFile(from: localUrl, metadata: nil) { (metadata, error) in
 			
             if error != nil{
                 onError(error?.localizedDescription)
@@ -210,10 +210,14 @@ extension AddVideoViewController{
                     onError(error?.localizedDescription)
                     return
                 }
+                let fileType = localUrl.pathExtension
                 //"videos"
-               
-                print(newVideoKey)
-                ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId, "latitude": lat, "longitude": long])
+                let asset = AVURLAsset(url: localUrl)
+                let durationInSeconds = asset.duration.seconds
+                print("\(durationInSeconds) durationInSeconds")
+                let notes = ""
+                
+                ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId, "latitude": lat, "longitude": long, "fileType": fileType, "notes": notes, "duration": durationInSeconds])
                 
                 //"album-videos"
                 Database.database().reference().child("album-videos").child(albumId).child(newVideoKey).setValue(1)
