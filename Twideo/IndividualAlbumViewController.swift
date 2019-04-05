@@ -250,7 +250,7 @@ class VideoModel{
         fileType = (dictionary["fileType"] as! String)
         notes = (dictionary["notes"] as! String)
         duration = (dictionary["duration"] as! Double)
-        
+        title = (dictionary["title"] as! String)
         
         
         
@@ -298,8 +298,8 @@ extension IndividualAlbumViewController: UISearchBarDelegate, UISearchController
         
         self.filteredVideos = videos.filter{ video in
             
-            let string = ("\(video.description)")
-            
+            let string = ("\(video.title!) \(video.description!)")
+            print(string)
             return(string.lowercased().contains(searchText.lowercased()))
             
         }

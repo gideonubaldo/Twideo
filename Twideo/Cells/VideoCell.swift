@@ -31,7 +31,7 @@ class VideoCell: UICollectionViewCell {
 		
         
         
-        descriptionLabel.text = videoModel.description
+        descriptionLabel.text = videoModel.title
     }
 	
    
