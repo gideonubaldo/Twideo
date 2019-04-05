@@ -586,6 +586,11 @@
                                     <constraint firstAttribute="trailing" secondItem="trG-vE-3if" secondAttribute="trailing" id="hfe-Of-0Gj"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sT-EF-hKd" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="313" y="245" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -606,15 +611,17 @@
                     <connections>
                         <outlet property="albumCountLabel" destination="6n1-aU-sTf" id="UiI-5f-Cag"/>
                         <outlet property="albumCountTitle" destination="cWx-1T-7NN" id="N0N-r6-JO4"/>
+                        <outlet property="logoutButton" destination="4sT-EF-hKd" id="ban-Ud-ar3"/>
                         <outlet property="shareCountLabel" destination="usQ-Uw-bxa" id="NT3-lM-I5O"/>
                         <outlet property="shareCountTitle" destination="3fo-fy-cRG" id="oCq-i0-VID"/>
                         <outlet property="videoCountLabel" destination="Qc0-6G-Afa" id="sjt-vA-Pbr"/>
                         <outlet property="videoCountTitle" destination="Rwf-J1-c3S" id="HxE-Vx-fGr"/>
+                        <segue destination="R6c-4j-0eP" kind="presentation" identifier="toSignInPage" id="act-ZM-K9I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fob-8y-qMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="967"/>
+            <point key="canvasLocation" x="-254" y="967"/>
         </scene>
         <!--Individual Album View Controller-->
         <scene sceneID="V1K-xp-R7k">

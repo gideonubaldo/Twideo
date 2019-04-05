@@ -111,21 +111,34 @@ class AlbumsViewController: UITableViewController, SwipeTableViewCellDelegate{
         
     }
     @objc func addButtonPressed(){
-        //        let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
-        //        let request = FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: params)
-        //        request?.start(completionHandler: { (connection, result, error) in
-        //            if error != nil {
-        //
-        //                let errorMessage = error!.localizedDescription
-        //
-        //            }else{
-        //
-        //                /* Handle response */
-        //                print(result)
-        //
-        //            }
-        //        })
         
+        FBSDKProfile.loadCurrentProfile { (profile, error) in
+            
+            if let p = profile{
+                print(p)
+                let fname = p.firstName
+                print(fname)
+                
+                let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
+                let request = FBSDKGraphRequest(graphPath: "\(p.userID)/user_friends", parameters: params)
+                request?.start(completionHandler: { (connection, result, error) in
+                    if error != nil {
+                        
+                        let errorMessage = error!.localizedDescription
+                        print("ERROR \(errorMessage)")
+                    }else{
+                        
+                        /* Handle response */
+                        print("Result \(result!)")
+                        
+                    }
+                })
+            } else {
+                print("nope")
+            }
+        }
+        print(FBSDKProfile.current())
+        print(FBSDKProfile.current()!.userID!)
         
         let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
         let createAlbumVC = storyboard.instantiateViewController(withIdentifier: "CreateAlbum") as! AddAlbumViewController
@@ -280,7 +293,7 @@ class AlbumsViewController: UITableViewController, SwipeTableViewCellDelegate{
         var videoIdsToDelete = [String]()
         
         Database.database().reference().child("videos").observeSingleEvent(of: .value) { (snapshot) in
-           
+            
             let videoDict = snapshot.value as! [String: NSDictionary]
             
             for (_, video) in videoDict {
@@ -290,14 +303,12 @@ class AlbumsViewController: UITableViewController, SwipeTableViewCellDelegate{
             }
             
             for i in 0..<videoIdsToDelete.count{
-                
-                 Database.database().reference().child("videos").child(videoIdsToDelete[i]).removeValue()
-                
+                Database.database().reference().child("videos").child(videoIdsToDelete[i]).removeValue()
             }
             
             
         }
-    
+        
         
         
         Database.database().reference().child("albums").child(albumId).removeValue()
