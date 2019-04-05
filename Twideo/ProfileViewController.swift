@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController , FBSDKLoginButtonDelegate{
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        performSegue(withIdentifier: "toSignInPage", sender: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 

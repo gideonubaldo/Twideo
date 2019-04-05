@@ -11,17 +11,19 @@ import FirebaseDatabase
 import AVKit
 class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    
     let segueIdentifier = "videoCellClicked"
     var album: NSDictionary?
     var roundButton = UIButton()
     var isSharedAlbums = Bool()//if false, the round button will appear
     let reuseIdentifier = "VideoCell"
     var clickedIndex: Int?
-//    var clickedVideoId: String?
-	
-    var videos = [VideoModel]()
-    @IBOutlet weak var collectionView: UICollectionView!
+    //    var clickedVideoId: String?
     
+    var videos = [VideoModel]()
+    var filteredVideos = [VideoModel]()
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     
@@ -31,13 +33,16 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         
         loadVideos()
         
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         if let album = album {
             navigationItem.title = (album["title"] as! String)
         }
         
+        searchBar.delegate = self
+        definesPresentationContext = true
+        
+        //        tableView.tableHeaderView = searchController.searchBar
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -53,21 +58,21 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
             }
         }
     }
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == segueIdentifier{
-			if let vc = segue.destination as? VideoViewController{
-				
-				if let index = clickedIndex{
-					vc.videoModel = videos[index]
-				} else{
-					print("NO VIDEO ID")
-				}
-			} else {
-				print("COULD NOT CAST TO VIDEOVC")
-			}
-			
-		}
-	}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueIdentifier{
+            if let vc = segue.destination as? VideoViewController{
+                
+                if let index = clickedIndex{
+                    vc.videoModel = videos[index]
+                } else{
+                    print("NO VIDEO ID")
+                }
+            } else {
+                print("COULD NOT CAST TO VIDEOVC")
+            }
+            
+        }
+    }
     func loadVideos(){
         
         guard let albumId = album!["albumId"] as? String else{
@@ -78,7 +83,7 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
             
             let videoId = snapshot.key
             Database.database().reference().child("videos").child(videoId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
-				
+                
                 let videoDict = snapshot.value as! NSDictionary
                 let videoModel = VideoModel(dictionary: videoDict)
                 self.videos.append(videoModel)
@@ -97,59 +102,69 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
     }
     //selected cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		clickedIndex = indexPath.row
-		performSegue(withIdentifier: segueIdentifier, sender: nil)
+        clickedIndex = indexPath.row
+        performSegue(withIdentifier: segueIdentifier, sender: nil)
         
     }
     
     //number of cells
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        
+        if searchBar.text != ""{
+            return filteredVideos.count
+        }
         return videos.count
-        
     }
     
     //text to fill cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCell
-
-        cell.configureCell(videoModel: videos[indexPath.row])
         
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VideoCell
+        
+        if searchBar.text != ""{
+            cell.configureCell(videoModel: filteredVideos[indexPath.row])
+            
+            
+        } else {
+            cell.configureCell(videoModel: videos[indexPath.row])
+        }
         // Configure the cell
         return cell
-
-
+        
+        
     }
-
+    
     
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        print("SIZE FOR ITEM AT")
-        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        return CGSize(width: widthPerItem, height: widthPerItem+10)
         
     }
-	
-    //3
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        print("INSET FOR SECTION AT")
         return sectionInsets
     }
     
-    // 4
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        print("MINIMUMLINE SPACING")
         return sectionInsets.left
+    }
+    
+    @objc func addButtonPressed(){
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
+        let createVideoVC = storyboard.instantiateViewController(withIdentifier: "CreateVideo") as! AddVideoViewController
+        createVideoVC.album = album!
+        present(createVideoVC, animated: true, completion: nil)
+        
+        
     }
     
     func createFloatingButton() {
@@ -199,17 +214,6 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         roundButton.addTarget(self, action: #selector(addButtonPressed), for: UIControl.Event.touchUpInside)
         
     }
-    @objc func addButtonPressed(){
-        
-        let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
-        let createVideoVC = storyboard.instantiateViewController(withIdentifier: "CreateVideo") as! AddVideoViewController
-        createVideoVC.album = album!
-        present(createVideoVC, animated: true, completion: nil)
-		
-        
-    }
-    
-    
 }
 
 class VideoModel{
@@ -233,9 +237,9 @@ class VideoModel{
             return
         }
         self.albumId = albumId
-		senderId = (dictionary["senderId"] as! String)
-		description = (dictionary["description"] as! String)
-		id = (dictionary["id"] as! String)
+        senderId = (dictionary["senderId"] as! String)
+        description = (dictionary["description"] as! String)
+        id = (dictionary["id"] as! String)
         
         if let videoURL = URL(string: dictionary["url"] as! String){
             url = videoURL
@@ -247,11 +251,76 @@ class VideoModel{
         notes = (dictionary["notes"] as! String)
         duration = (dictionary["duration"] as! Double)
         
-		
+        
         
         
     }
     
     
+    
+}
+
+extension IndividualAlbumViewController: UISearchBarDelegate, UISearchControllerDelegate{
+    func updateSearchResults(for searchBar: UISearchBar) {
+        filterContent(searchText: searchBar.text!)
+        
+    }
+    
+    //search ends
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        print("CLICKED")
+        return true
+    }
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    //searhc begins
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    //cancel clicked
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    //search clicked
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    func filterContent(searchText: String){
+        
+        
+        self.filteredVideos = videos.filter{ video in
+            
+            let string = ("\(video.description)")
+            
+            return(string.lowercased().contains(searchText.lowercased()))
+            
+        }
+        
+        collectionView.reloadData()
+        
+        
+    }
+    
+    
+    
+    //search bar text changed
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        updateSearchResults(for: self.searchBar)
+        //        if searchBar.text?.count == 0 {
+        //
+        //            //Disaptch Queue object assigns projects to different thread
+        //            DispatchQueue.main.async {
+        //                searchBar.resignFirstResponder()
+        //            }
+        //        }
+    }
     
 }

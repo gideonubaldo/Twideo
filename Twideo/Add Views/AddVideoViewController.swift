@@ -27,6 +27,7 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
     var longitude: Double?
     
     
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
     
@@ -185,11 +186,22 @@ extension AddVideoViewController{
                     print("Error downloading URL: \(error!.localizedDescription)")
                     return
                 }
+                guard let title = self.titleTextField.text else {
+                    print("No Title")
+                    onError(error?.localizedDescription)
+                    return
+                }
                 
                 guard let description = self.descriptionTextField.text else { print("NO description")
                     onError(error?.localizedDescription)
-                    return}
-                
+                    return
+                    
+                }
+                guard let notes = self.notesTextField.text else {
+                    print("NO notes")
+                    onError(error?.localizedDescription)
+                    return
+                }
                 
                 guard let url = videoUrl?.absoluteString else{
                     print("no url")
@@ -218,12 +230,8 @@ extension AddVideoViewController{
                 let durationInSeconds = asset.duration.seconds
                 print("\(durationInSeconds) durationInSeconds")
                 
-                guard let notes = self.notesTextField.text else {
-                    print("NO notes")
-                    onError(error?.localizedDescription)
-                    return
-                }
-                ref.updateChildValues(["id" : newVideoKey, "url" : url, "description" : description, "albumId": albumId, "senderId": userId, "latitude": lat, "longitude": long, "fileType": fileType, "notes": notes, "duration": durationInSeconds])
+                
+                ref.updateChildValues(["id" : newVideoKey, "url" : url,"title": title, "description" : description, "albumId": albumId, "senderId": userId, "latitude": lat, "longitude": long, "fileType": fileType, "notes": notes, "duration": durationInSeconds])
                 
                 //"album-videos"
                 Database.database().reference().child("album-videos").child(albumId).child(newVideoKey).setValue(1)

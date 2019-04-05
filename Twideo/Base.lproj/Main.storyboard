@@ -362,9 +362,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.53725490200000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="IDb-Kn-TS4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="71" id="tGW-qc-s0A" customClass="AlbumTableViewCell" customModule="Twideo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tGW-qc-s0A" id="evp-SG-FZf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
@@ -616,7 +621,6 @@
                         <outlet property="shareCountTitle" destination="3fo-fy-cRG" id="oCq-i0-VID"/>
                         <outlet property="videoCountLabel" destination="Qc0-6G-Afa" id="sjt-vA-Pbr"/>
                         <outlet property="videoCountTitle" destination="Rwf-J1-c3S" id="HxE-Vx-fGr"/>
-                        <segue destination="R6c-4j-0eP" kind="presentation" identifier="toSignInPage" id="act-ZM-K9I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fob-8y-qMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -631,8 +635,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="beb-qi-6jS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ptI-rc-m09">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nR1-i3-yXT">
@@ -678,6 +687,7 @@
                     <navigationItem key="navigationItem" id="fwP-bB-Ah2"/>
                     <connections>
                         <outlet property="collectionView" destination="ptI-rc-m09" id="wOn-ru-yR6"/>
+                        <outlet property="searchBar" destination="beb-qi-6jS" id="LMK-he-Mhi"/>
                         <segue destination="jKc-Aj-gse" kind="show" identifier="videoCellClicked" id="y9H-oy-dpP"/>
                     </connections>
                 </viewController>

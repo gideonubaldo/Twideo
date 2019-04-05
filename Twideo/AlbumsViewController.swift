@@ -137,8 +137,7 @@ class AlbumsViewController: UITableViewController, SwipeTableViewCellDelegate{
                 print("nope")
             }
         }
-        print(FBSDKProfile.current())
-        print(FBSDKProfile.current()!.userID!)
+        
         
         let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
         let createAlbumVC = storyboard.instantiateViewController(withIdentifier: "CreateAlbum") as! AddAlbumViewController
