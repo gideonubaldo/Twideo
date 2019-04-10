@@ -58,14 +58,14 @@ class AlbumsViewController: UITableViewController{
     }
     func loadMyAlbums(){
         print("LOAD")
-        myAlbums = []
+        
         guard let uid = Auth.auth().currentUser?.uid else {
             print("No curent user id")
             return
         }
         
         Database.database().reference().child("user-albums").child(uid).child("albums").observe(.childAdded) { (snapshot) in
-            
+            self.myAlbums = []
             let albumId = snapshot.key
             print("ADEED \(albumId)")
             Database.database().reference().child("albums").child(albumId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
