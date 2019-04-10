@@ -27,6 +27,7 @@
 		B38584A22240B41400BA1A75 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A12240B41400BA1A75 /* AlbumsViewController.swift */; };
 		B38584A42240B45E00BA1A75 /* IndividualAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */; };
 		B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */; };
+		E22CB340225E7076006C5043 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E22CB33F225E7072006C5043 /* background.jpg */; };
 		E2F40A00222F425400515593 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F409FF222F425400515593 /* CreateAccount.swift */; };
 		E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F40A01222FBF8000515593 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		B38584A12240B41400BA1A75 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAlbumViewController.swift; sourceTree = "<group>"; };
 		B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSlideOutViewController.swift; sourceTree = "<group>"; };
+		E22CB33F225E7072006C5043 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		E2F409FF222F425400515593 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		E2F40A01222FBF8000515593 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		ED66A254AEE4C105A9DFD474 /* Pods_Twideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 		94A5A507222DCDC50000821B /* Twideo */ = {
 			isa = PBXGroup;
 			children = (
+				E22CB33F225E7072006C5043 /* background.jpg */,
 				94A5A508222DCDC50000821B /* AppDelegate.swift */,
 				B38584A02240B36700BA1A75 /* Authentication */,
 				B324144522471E490037FFA9 /* Cells */,
@@ -233,6 +236,7 @@
 				94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */,
 				B34193E42242C04B0027E7CA /* AddViews.storyboard in Resources */,
 				943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */,
+				E22CB340225E7076006C5043 /* background.jpg in Resources */,
 				94A5A510222DCDC70000821B /* Assets.xcassets in Resources */,
 				94A5A50E222DCDC50000821B /* Main.storyboard in Resources */,
 			);
@@ -271,7 +275,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -302,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -481,7 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gideonubaldo.Twideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -500,7 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gideonubaldo.Twideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
