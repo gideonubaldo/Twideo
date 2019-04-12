@@ -13,6 +13,7 @@ import ProgressHUD
 class AlbumsViewController: UITableViewController{
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     //floating button bottom right, clicked to add album
@@ -28,10 +29,14 @@ class AlbumsViewController: UITableViewController{
         }
     }
     
+    var filteredAlbums = [NSDictionary]()
+    
     override func viewDidLoad() {
         tableView.delegate = self
         
         tableView.dataSource = self
+        searchBar.delegate = self
+        definesPresentationContext = true
         
         self.selectedAlbums = self.myAlbums
         //        loadSharedAlbums()
@@ -90,7 +95,11 @@ class AlbumsViewController: UITableViewController{
         } else if segue.identifier == "albumCellClicked"{
             
             let destination = (segue.destination as! IndividualAlbumViewController)
+            if searchBar.text != ""{
+                destination.album = self.filteredAlbums[tableView.indexPathForSelectedRow!.row]
+            } else {
             destination.album = self.selectedAlbums[tableView.indexPathForSelectedRow!.row]
+            }
             if isSharedAlbums == true{
                 destination.isSharedAlbums = true
             } else {
@@ -195,13 +204,23 @@ class AlbumsViewController: UITableViewController{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell", for: indexPath) as! AlbumTableViewCell
         
-        cell.titleLabel?.text = "\(selectedAlbums[indexPath.row]["title"]!)"
+        
+        if searchBar.text != ""{
+            cell.titleLabel?.text = "\(filteredAlbums[indexPath.row]["title"]!)"
+        } else {
+            cell.titleLabel?.text = "\(selectedAlbums[indexPath.row]["title"]!)"
+
+        }
         
         return cell
         
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if searchBar.text != ""{
+            
+            return filteredAlbums.count
+            
+        }
         return selectedAlbums.count
         
     }
@@ -302,3 +321,67 @@ class AlbumsViewController: UITableViewController{
     
 }
 
+extension AlbumsViewController: UISearchBarDelegate, UISearchControllerDelegate{
+    func updateSearchResults(for searchBar: UISearchBar) {
+        filterContent(searchText: searchBar.text!)
+        
+    }
+    
+    //search ends
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        print("CLICKED")
+        return true
+    }
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    //searhc begins
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    //cancel clicked
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    //search clicked
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    func filterContent(searchText: String){
+        
+        
+        self.filteredAlbums = selectedAlbums.filter{ album in
+            
+            let string = "\(album["title"])"
+            print(string)
+            return(string.lowercased().contains(searchText.lowercased()))
+            
+        }
+        
+        tableView.reloadData()
+        
+        
+    }
+    
+    
+    
+    //search bar text changed
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        updateSearchResults(for: self.searchBar)
+        //        if searchBar.text?.count == 0 {
+        //
+        //            //Disaptch Queue object assigns projects to different thread
+        //            DispatchQueue.main.async {
+        //                searchBar.resignFirstResponder()
+        //            }
+        //        }
+    }
+    
+}

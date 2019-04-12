@@ -82,9 +82,13 @@ class IndividualAlbumViewController: UIViewController, UICollectionViewDelegate,
         Database.database().reference().child("album-videos").child(albumId).observe(.childAdded) { (snapshot) in
             
             let videoId = snapshot.key
+           print("VideoId \(videoId)")
             Database.database().reference().child("videos").child(videoId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                let videoDict = snapshot.value as! NSDictionary
+                print("videoDict \(snapshot.value)")
+                guard let videoDict = snapshot.value as? NSDictionary else {
+                    print("ERROR IN VIDEOS NODE")
+                    return
+                }
                 let videoModel = VideoModel(dictionary: videoDict)
                 self.videos.append(videoModel)
                 DispatchQueue.main.async {

@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="dbl-Z2-IyU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667.00000000000023"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twideo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI5-8L-P2v">
                                 <rect key="frame" x="124" y="65" width="127.5" height="55"/>
@@ -438,6 +438,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="IDb-Kn-TS4" id="sOe-DB-1SO"/>
                         <segue destination="NKc-ze-sDH" kind="push" identifier="albumCellClicked" id="Afy-DT-cXG"/>
                     </connections>
                 </tableViewController>

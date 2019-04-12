@@ -32,7 +32,9 @@ class EditAlbumViewController: UIViewController {
         titleTextField.text = title
         descriptionTextField.text = description
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     @IBAction func submitPressed(_ sender: Any) {
         if titleTextField.text!.isValid() && descriptionTextField.text!.isValid(){
 

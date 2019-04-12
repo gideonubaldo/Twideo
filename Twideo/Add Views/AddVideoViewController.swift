@@ -139,6 +139,9 @@ extension AddVideoViewController{
     func saveVideo(){
         
         ProgressHUD.show("Saving video. This might take a while...")
+//        self.view.isUserInteractionEnabled = false
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
         print("STARTED")
         guard let userId = Auth.auth().currentUser?.uid else {
 			print("NO UID")
@@ -153,13 +156,16 @@ extension AddVideoViewController{
         saveVideoHelper(localUrl: localVideoURL!, userId: userId, onSuccess:{
             
             print("Success")
+//            self.view.isUserInteractionEnabled = true
+            UIApplication.shared.endIgnoringInteractionEvents()
             ProgressHUD.showSuccess()
             //ProgressHUD.showSuccess("Success")
-//            self.performSegue(withIdentifier: "signUpToDaySelect", sender: nil)
             
         }, onError: {errorString in
             ProgressHUD.showError()
             print("ERROR")
+//            self.view.isUserInteractionEnabled = true
+            UIApplication.shared.endIgnoringInteractionEvents()
             //ProgressHUD.showError(errorString!)
             
         })

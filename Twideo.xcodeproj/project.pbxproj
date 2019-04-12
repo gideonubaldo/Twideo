@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		87DF2F9C493860B74413600F /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED66A254AEE4C105A9DFD474 /* Pods_Twideo.framework */; };
 		943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 943B976F222DD49400001534 /* GoogleService-Info.plist */; };
 		949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F9E6C222F3E23004F4953 /* ProfileViewController.swift */; };
 		94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A508222DCDC50000821B /* AppDelegate.swift */; };
@@ -30,11 +29,11 @@
 		E22CB340225E7076006C5043 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E22CB33F225E7072006C5043 /* background.jpg */; };
 		E2F40A00222F425400515593 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F409FF222F425400515593 /* CreateAccount.swift */; };
 		E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F40A01222FBF8000515593 /* MapViewController.swift */; };
+		FC351772473F4880F077CD7D /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2016868D358D3A946D300 /* Pods_Twideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		72DF488DC6F7FB96747B4818 /* Pods-Twideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.release.xcconfig"; sourceTree = "<group>"; };
-		7DC008801AD948C6589F83A2 /* Pods-Twideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.debug.xcconfig"; sourceTree = "<group>"; };
+		8BB2016868D358D3A946D300 /* Pods_Twideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		943B976F222DD49400001534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		949F9E6C222F3E23004F4953 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		94A5A505222DCDC50000821B /* Twideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,10 +55,11 @@
 		B38584A12240B41400BA1A75 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAlbumViewController.swift; sourceTree = "<group>"; };
 		B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSlideOutViewController.swift; sourceTree = "<group>"; };
+		BA5D54B119F5671A695C8A5B /* Pods-Twideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.debug.xcconfig"; sourceTree = "<group>"; };
 		E22CB33F225E7072006C5043 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		E2F409FF222F425400515593 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		E2F40A01222FBF8000515593 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		ED66A254AEE4C105A9DFD474 /* Pods_Twideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD75FF31D2A20804EA4FCBD6 /* Pods-Twideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 			files = (
 				B35E2FDF225437B6001D791E /* MapKit.framework in Frameworks */,
 				B35E2FDD22543120001D791E /* CoreLocation.framework in Frameworks */,
-				87DF2F9C493860B74413600F /* Pods_Twideo.framework in Frameworks */,
+				FC351772473F4880F077CD7D /* Pods_Twideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,16 +81,16 @@
 			children = (
 				B35E2FDE225437B6001D791E /* MapKit.framework */,
 				B35E2FDC22543120001D791E /* CoreLocation.framework */,
-				ED66A254AEE4C105A9DFD474 /* Pods_Twideo.framework */,
+				8BB2016868D358D3A946D300 /* Pods_Twideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0E1F85DD319F575A5B1F188A /* Pods */ = {
+		7C869C4FE7EF15716E6DB571 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7DC008801AD948C6589F83A2 /* Pods-Twideo.debug.xcconfig */,
-				72DF488DC6F7FB96747B4818 /* Pods-Twideo.release.xcconfig */,
+				BA5D54B119F5671A695C8A5B /* Pods-Twideo.debug.xcconfig */,
+				FD75FF31D2A20804EA4FCBD6 /* Pods-Twideo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -101,7 +101,7 @@
 				94A5A507222DCDC50000821B /* Twideo */,
 				94A5A506222DCDC50000821B /* Products */,
 				073FD69A1938627711090048 /* Frameworks */,
-				0E1F85DD319F575A5B1F188A /* Pods */,
+				7C869C4FE7EF15716E6DB571 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,11 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94A5A517222DCDC70000821B /* Build configuration list for PBXNativeTarget "Twideo" */;
 			buildPhases = (
-				833D2AF9133F4F4CFC7F2661 /* [CP] Check Pods Manifest.lock */,
+				3CF29B9EB19BA53556AEC7A0 /* [CP] Check Pods Manifest.lock */,
 				94A5A501222DCDC50000821B /* Sources */,
 				94A5A502222DCDC50000821B /* Frameworks */,
 				94A5A503222DCDC50000821B /* Resources */,
-				A914C570DF0989F2D2332327 /* [CP] Embed Pods Frameworks */,
+				972C59F5A1E714CBAA173889 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,7 +245,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		833D2AF9133F4F4CFC7F2661 /* [CP] Check Pods Manifest.lock */ = {
+		3CF29B9EB19BA53556AEC7A0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -267,7 +267,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A914C570DF0989F2D2332327 /* [CP] Embed Pods Frameworks */ = {
+		972C59F5A1E714CBAA173889 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,7 +275,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -306,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Twideo/Pods-Twideo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -473,7 +473,7 @@
 		};
 		94A5A518222DCDC70000821B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DC008801AD948C6589F83A2 /* Pods-Twideo.debug.xcconfig */;
+			baseConfigurationReference = BA5D54B119F5671A695C8A5B /* Pods-Twideo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -492,7 +492,7 @@
 		};
 		94A5A519222DCDC70000821B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72DF488DC6F7FB96747B4818 /* Pods-Twideo.release.xcconfig */;
+			baseConfigurationReference = FD75FF31D2A20804EA4FCBD6 /* Pods-Twideo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
