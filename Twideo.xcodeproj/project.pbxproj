@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847BDED02272132A00B6AEB7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BDECF2272132A00B6AEB7 /* Comment.swift */; };
+		8487E00622712FEB000FF616 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487E00522712FEB000FF616 /* CommentViewController.swift */; };
+		84B3239A2271337900F59045 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B323992271337900F59045 /* CommentCell.swift */; };
 		943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 943B976F222DD49400001534 /* GoogleService-Info.plist */; };
 		949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F9E6C222F3E23004F4953 /* ProfileViewController.swift */; };
 		94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A508222DCDC50000821B /* AppDelegate.swift */; };
@@ -33,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		847BDECF2272132A00B6AEB7 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		8487E00522712FEB000FF616 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentViewController.swift; path = /Users/rileychetwood/Desktop/Developer/FinalProject/Twideo/Twideo/CommentViewController.swift; sourceTree = "<absolute>"; };
+		84B323992271337900F59045 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		8BB2016868D358D3A946D300 /* Pods_Twideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		943B976F222DD49400001534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		949F9E6C222F3E23004F4953 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -122,13 +128,16 @@
 				B324144522471E490037FFA9 /* Cells */,
 				B318412B2255360600908EFE /* Add Views */,
 				B318412C2255361900908EFE /* Edit Views */,
-				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
 				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
 				E2F40A01222FBF8000515593 /* MapViewController.swift */,
 				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
 				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
 				B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
+				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
+				847BDECF2272132A00B6AEB7 /* Comment.swift */,
+				84B323992271337900F59045 /* CommentCell.swift */,
+				8487E00522712FEB000FF616 /* CommentViewController.swift */,
 				B34193E32242C04B0027E7CA /* AddViews.storyboard */,
 				94A5A511222DCDC70000821B /* LaunchScreen.storyboard */,
 				94A5A50F222DCDC70000821B /* Assets.xcassets */,
@@ -321,6 +330,8 @@
 				B318412E2255363200908EFE /* EditAlbumViewController.swift in Sources */,
 				E2F40A00222F425400515593 /* CreateAccount.swift in Sources */,
 				B34193E8224361E30027E7CA /* AlbumTableViewCell.swift in Sources */,
+				847BDED02272132A00B6AEB7 /* Comment.swift in Sources */,
+				8487E00622712FEB000FF616 /* CommentViewController.swift in Sources */,
 				E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */,
 				B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */,
 				B34193EE22443A2F0027E7CA /* AddVideoViewController.swift in Sources */,
@@ -330,6 +341,7 @@
 				94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */,
 				B33F621F222F383A00CA0B95 /* VideoViewController.swift in Sources */,
 				B38584A42240B45E00BA1A75 /* IndividualAlbumViewController.swift in Sources */,
+				84B3239A2271337900F59045 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

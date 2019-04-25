@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import UIKit
+
+class Comment {
+    let videoID: String
+    let author:String
+    let content:String
+    let timestamp: Double
+    
+    init(videoID: String, author: String, content: String, timestamp: Double) {
+        self.videoID = videoID
+        self.author = author
+        self.content = content
+        self.timestamp = timestamp
+    }
+}

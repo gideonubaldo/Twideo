@@ -39,6 +39,11 @@ class VideoViewController: UIViewController {
                 vc.videoModel = videoModel!
             }
         }
+        if segue.identifier == "viewComments"{
+            if let vc = segue.destination as? CommentViewController{
+                vc.testString = "Testing"
+            }
+        }
     }
 	func configureView(){
         
