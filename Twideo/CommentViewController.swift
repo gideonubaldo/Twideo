@@ -7,6 +7,11 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import UIKit
+import FBSDKCoreKit
+import SideMenu
+import Firebase
+import ProgressHUD
 
 class CommentViewController: UIViewController {
     
@@ -34,6 +39,31 @@ class CommentViewController: UIViewController {
         
         tempArray.append(testComment)
         return tempArray
+    }
+    
+    //change query -> pull the comments into the comment section
+    func loadMyComments(){
+        print("LOAD")
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("No curent user id")
+            return
+        }
+        //EDIT THIS TO BE CONTEXT OF COMMENTS
+//        Database.database().reference().child("user-albums").child(uid).child("albums").observe(.childAdded) { (snapshot) in
+//            self.myAlbums = []
+//            let albumId = snapshot.key
+//            print("ADEED \(albumId)")
+//            Database.database().reference().child("albums").child(albumId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//                let albumDict = snapshot.value as! NSDictionary
+//                self.myAlbums.append(albumDict)
+//                if !self.isSharedAlbums {
+//                    self.selectedAlbums = self.myAlbums
+//                }
+//
+//            })
+        }
     }
     
 }
