@@ -31,7 +31,7 @@ class CommentViewController: UIViewController {
     
     func createArray() -> [Comment] {
         var tempArray: [Comment] = []
-        let testComment = Comment(videoID: "1", author: "Lebron", content: testString ?? "not passed", timestamp: NSDate().timeIntervalSince1970)
+        let testComment = Comment(videoID: "1", author: "Lebron", content: testString 	?? "not passed", timestamp: NSDate().timeIntervalSince1970)
     
         tempArray.append(testComment)
         return tempArray
