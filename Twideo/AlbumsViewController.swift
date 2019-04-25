@@ -61,6 +61,7 @@ class AlbumsViewController: UITableViewController{
             }
         }
     }
+    //change query -> pull the comments into the comment section
     func loadMyAlbums(){
         print("LOAD")
         
