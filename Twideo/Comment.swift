@@ -13,9 +13,9 @@ class Comment {
     let videoID: String
     let author:String
     let content:String
-    let timestamp: Double
+    let timestamp: String
     
-    init(videoID: String, author: String, content: String, timestamp: Double) {
+    init(videoID: String, author: String, content: String, timestamp: String) {
         self.videoID = videoID
         self.author = author
         self.content = content

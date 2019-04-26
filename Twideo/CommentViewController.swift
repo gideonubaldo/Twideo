@@ -26,45 +26,71 @@ class CommentViewController: UIViewController {
         super.viewDidLoad()
         commentTableView.delegate = self
         commentTableView.dataSource = self
-        comments = createArray()
+        loadComments()
+        //comments = createArray()
     }
     
     @IBAction func onClickReply(_ sender: Any) {
+        if(commentTextBox.hasText){
+            let text = commentTextBox.text
+            if(text!.count>140){
+                print("message too long")
+                return
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let videoID = "thisIsTheVideoID"
+            ref.child("comments").child(videoID).childByAutoId().setValue(["author": Auth.auth().currentUser?.uid, "content": commentTextBox.text, "timeStamp": dateFormatter.string(from: NSDate() as Date) as NSString])
+        commentTextBox.text = ""
+        }
+        else{
+            print("no text")
+        }
+        
         
     }
     
-    func createArray() -> [Comment] {
-        var tempArray: [Comment] = []
-        let testComment = Comment(videoID: "1", author: "Lebron", content: testString     ?? "not passed", timestamp: NSDate().timeIntervalSince1970)
-        
-        tempArray.append(testComment)
-        return tempArray
-    }
+//    func createArray() -> [Comment] {
+//        var tempArray: [Comment] = []
+//        let testComment = Comment(videoID: "1", author: "Lebron", content: testString     ?? "not passed", timestamp: NSDate().timeIntervalSince1970)
+//
+//        tempArray.append(testComment)
+//        return tempArray;
+//    }
     
-    //change query -> pull the comments into the comment section
-    func loadMyComments(){
-        print("LOAD")
-        
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("No curent user id")
-            return
+//    // Listen for new comments in the Firebase database
+//    commentsRef.observe(.childAdded, with: { (snapshot) -> Void in
+//    self.comments.append(snapshot)
+//    self.tableView.insertRows(at: [IndexPath(row: self.comments.count-1, section: self.kSectionComments)], with: UITableView.RowAnimation.automatic)
+//    })
+//    // Listen for deleted comments in the Firebase database
+//    commentsRef.observe(.childRemoved, with: { (snapshot) -> Void in
+//    let index = self.indexOfMessage(snapshot)
+//    self.comments.remove(at: index)
+//    self.tableView.deleteRows(at: [IndexPath(row: index, section: self.kSectionComments)], with: UITableView.RowAnimation.automatic)
+//    })
+    
+    
+    
+    func loadComments(){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("comments").child("thisIsTheVideoID").queryOrdered(byChild: "timeStamp").observe(.childAdded, with: { (snapshot) in
+            //print("snapshot:\(snapshot.value)" )
+            let commentContent = snapshot.value! as? NSDictionary
+            //print("commentContent:\(commentContent)")
+            let stringArray = commentContent?.allValues as! [String]
+            var newComment = Comment(videoID: "videoID", author: stringArray[2], content: stringArray[0], timestamp: stringArray[2])
+                self.comments.append(newComment)
+               self.tableView.reloadData()
+            
+            
+            
         }
-        //EDIT THIS TO BE CONTEXT OF COMMENTS
-//        Database.database().reference().child("user-albums").child(uid).child("albums").observe(.childAdded) { (snapshot) in
-//            self.myAlbums = []
-//            let albumId = snapshot.key
-//            print("ADEED \(albumId)")
-//            Database.database().reference().child("albums").child(albumId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//                let albumDict = snapshot.value as! NSDictionary
-//                self.myAlbums.append(albumDict)
-//                if !self.isSharedAlbums {
-//                    self.selectedAlbums = self.myAlbums
-//                }
-//
-//            })
+    )
         }
-    }
     
 }
 extension CommentViewController: UITableViewDataSource, UITableViewDelegate {
