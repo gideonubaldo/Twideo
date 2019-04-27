@@ -16,8 +16,7 @@ import ProgressHUD
 class CommentViewController: UIViewController {
     
     var comments: [Comment] = []
-    var videoModel: VideoModel?
-    var testString: String?
+    var videoModel: VideoModel?	
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var commentTextBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -41,8 +40,8 @@ class CommentViewController: UIViewController {
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let videoID = "thisIsTheVideoID"
-            ref.child("comments").child(videoID).childByAutoId().setValue(["author": Auth.auth().currentUser?.uid, "content": commentTextBox.text, "timeStamp": dateFormatter.string(from: NSDate() as Date) as NSString])
+        let videoID = videoModel?.id
+            ref.child("comments").child(videoID ?? "No video ID provided").childByAutoId().setValue(["author": Auth.auth().currentUser?.uid, "content": commentTextBox.text, "timeStamp": dateFormatter.string(from: NSDate() as Date) as NSString])
         commentTextBox.text = ""
         }
         else{

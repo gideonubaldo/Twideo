@@ -41,7 +41,7 @@ class VideoViewController: UIViewController {
         }
         if segue.identifier == "viewComments"{
             if let vc = segue.destination as? CommentViewController{
-                vc.testString = "Testing"
+                vc.videoModel = videoModel
             }
         }
     }
