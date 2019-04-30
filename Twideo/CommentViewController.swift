@@ -76,7 +76,7 @@ class CommentViewController: UIViewController {
     func loadComments(){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("comments").child("thisIsTheVideoID").queryOrdered(byChild: "timeStamp").observe(.childAdded, with: { (snapshot) in
+        ref.child("comments").child((videoModel?.id!)!).queryOrdered(byChild: "timeStamp").observe(.childAdded, with: { (snapshot) in
             //print("snapshot:\(snapshot.value)" )
             let commentContent = snapshot.value! as? NSDictionary
             //print("commentContent:\(commentContent)")

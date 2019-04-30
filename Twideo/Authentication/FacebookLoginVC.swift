@@ -98,10 +98,23 @@ class FacebookLoginVC: UIViewController, FBSDKLoginButtonDelegate, LoginButtonDe
             }
             print("Firebase login done")
             if let user = Auth.auth().currentUser{
-                Database.database().reference().child("users").updateChildValues([user.uid:1])
-                self.performSegue(withIdentifier: "loggedIn", sender: self)
-                print("Current firebase user is")
-                print(user)
+                
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+                    let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, picture.type(large)"])
+                    let _ = request?.start(completionHandler: { (connection, result, error) in
+                        guard let userInfo = result as? [String: Any] else { return } //handle the error
+                        if let name = userInfo["name"] as? String{
+                            
+                            Database.database().reference().child("users").child(user.uid).updateChildValues(["uid" : user.uid, "username": name])
+                            //                Database.database().reference().child("users").updateChildValues([user.uid:1])
+                            self.performSegue(withIdentifier: "loggedIn", sender: self)
+                            print("Current firebase user is")
+                            print(user)
+                        }
+                    })
+                        
+                
             }
         }
     }

@@ -28,8 +28,9 @@
 		B38584A22240B41400BA1A75 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A12240B41400BA1A75 /* AlbumsViewController.swift */; };
 		B38584A42240B45E00BA1A75 /* IndividualAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */; };
 		B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */; };
+		B3DC8BBA2277AFB1001E6AEA /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */; };
+		B3DC8BBC2277C810001E6AEA /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */; };
 		E22CB340225E7076006C5043 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E22CB33F225E7072006C5043 /* background.jpg */; };
-		E295BA9E22723BDE00430B2C /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E295BA9D22723BDE00430B2C /* CommentViewController.swift */; };
 		E2F40A00222F425400515593 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F409FF222F425400515593 /* CreateAccount.swift */; };
 		E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F40A01222FBF8000515593 /* MapViewController.swift */; };
 		FC351772473F4880F077CD7D /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2016868D358D3A946D300 /* Pods_Twideo.framework */; };
@@ -60,9 +61,10 @@
 		B38584A12240B41400BA1A75 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAlbumViewController.swift; sourceTree = "<group>"; };
 		B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSlideOutViewController.swift; sourceTree = "<group>"; };
+		B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		BA5D54B119F5671A695C8A5B /* Pods-Twideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.debug.xcconfig"; sourceTree = "<group>"; };
 		E22CB33F225E7072006C5043 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
-		E295BA9D22723BDE00430B2C /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		E2F409FF222F425400515593 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		E2F40A01222FBF8000515593 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FD75FF31D2A20804EA4FCBD6 /* Pods-Twideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,11 +135,12 @@
 				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
 				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
 				B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */,
+				B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */,
 				94A5A50C222DCDC50000821B /* Main.storyboard */,
 				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
 				847BDECF2272132A00B6AEB7 /* Comment.swift */,
 				84B323992271337900F59045 /* CommentCell.swift */,
-				E295BA9D22723BDE00430B2C /* CommentViewController.swift */,
+				B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */,
 				B34193E32242C04B0027E7CA /* AddViews.storyboard */,
 				94A5A511222DCDC70000821B /* LaunchScreen.storyboard */,
 				94A5A50F222DCDC70000821B /* Assets.xcassets */,
@@ -330,9 +333,10 @@
 				B318412E2255363200908EFE /* EditAlbumViewController.swift in Sources */,
 				E2F40A00222F425400515593 /* CreateAccount.swift in Sources */,
 				B34193E8224361E30027E7CA /* AlbumTableViewCell.swift in Sources */,
+				B3DC8BBA2277AFB1001E6AEA /* CommentViewController.swift in Sources */,
 				847BDED02272132A00B6AEB7 /* Comment.swift in Sources */,
+				B3DC8BBC2277C810001E6AEA /* DiscoverViewController.swift in Sources */,
 				E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */,
-				E295BA9E22723BDE00430B2C /* CommentViewController.swift in Sources */,
 				B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */,
 				B34193EE22443A2F0027E7CA /* AddVideoViewController.swift in Sources */,
 				B30AC40222457CE9003970F6 /* VideoCell.swift in Sources */,

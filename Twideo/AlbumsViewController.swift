@@ -31,6 +31,8 @@ class AlbumsViewController: UITableViewController{
     
     var filteredAlbums = [NSDictionary]()
     
+    
+    var albumToShareId: String?
     override func viewDidLoad() {
         tableView.delegate = self
         
@@ -39,7 +41,7 @@ class AlbumsViewController: UITableViewController{
         definesPresentationContext = true
         
         self.selectedAlbums = self.myAlbums
-        //        loadSharedAlbums()
+        
         
     }
     
@@ -49,6 +51,7 @@ class AlbumsViewController: UITableViewController{
             createFloatingButton()
         }
        loadMyAlbums()
+        loadSharedAlbums()
         
         
         
@@ -61,6 +64,28 @@ class AlbumsViewController: UITableViewController{
             }
         }
     }
+    
+    func loadSharedAlbums(){
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("No curent user id")
+            return
+        }
+        
+        Database.database().reference().child("user-sharedAlbums").child(uid).observe(.childAdded) { (snapshot) in
+            self.sharedAlbums = []
+            let albumId = snapshot.key
+            print("ADEED \(albumId)")
+            Database.database().reference().child("albums").child(albumId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                let albumDict = snapshot.value as! NSDictionary
+                self.sharedAlbums.append(albumDict)
+            
+            })
+        }
+        
+    }
+    
     //change query -> pull the comments into the comment section
     func loadMyAlbums(){
         print("LOAD")
@@ -106,6 +131,9 @@ class AlbumsViewController: UITableViewController{
             } else {
                 destination.isSharedAlbums = false
             }
+        } else if segue.identifier == "ShowDiscover" {
+            let destination = (segue.destination as! DiscoverViewController)
+            destination.selectedAlbumId = self.albumToShareId
         }
         
         
@@ -259,7 +287,19 @@ class AlbumsViewController: UITableViewController{
         let shareTitle = NSLocalizedString("Share", comment: "Share action")
         let shareAction = UIContextualAction(style: .normal, title: shareTitle) { (action, sourceView, completionHandler) in
             
+            
+            
             print("SHARE PRESSED")
+            
+            if self.searchBar.text != ""{
+                self.albumToShareId = "\(self.filteredAlbums[indexPath.row]["albumId"]!)"
+            } else {
+                self.albumToShareId = "\(self.selectedAlbums[indexPath.row]["albumId"]!)"
+                
+            }
+            
+            
+            self.performSegue(withIdentifier: "ShowDiscover", sender: nil)
             
         }
         shareAction.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)

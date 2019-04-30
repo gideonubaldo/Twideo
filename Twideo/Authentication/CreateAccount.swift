@@ -11,11 +11,14 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-
+import ProgressHUD
 class CreateAccount: UIViewController {
     var refUser: DatabaseReference!
+    
     @IBOutlet weak var textFieldName: UITextField!
     @IBOutlet weak var textFieldPass: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    
     @IBAction func Login(_ sender: UIButton) {
         addUser()
     }
@@ -45,8 +48,21 @@ class CreateAccount: UIViewController {
                         print("You have successfully signed up")
                         //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                         
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-                        self.present(vc!, animated: true, completion: nil)
+    
+                        if let uid = Auth.auth().currentUser?.uid{
+                            
+                            if self.usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) != ""{
+                                self.signUpUser(uid: uid, username: self.usernameTextField.text!)
+                                
+                            } else {
+                                ProgressHUD.showError("Please choose username")
+                            }
+                            
+                            
+                            
+                            
+                        }
+                        
                         
                     } else {
                         let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -59,6 +75,27 @@ class CreateAccount: UIViewController {
                 }
             }
         }
+    
+    func signUpUser(uid: String, username: String ){
+        
+        //get referenece to users in the database
+        let usersRef = Database.database().reference().child("users")
+        
+        
+        
+        //save into database user(username, email, major, school profileImage,...)
+       
+        usersRef.child(uid).setValue(["uid": uid, "username" : username]) { (err, ref) in
+            if err == nil{
+                ProgressHUD.showSuccess("Successfully created user")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                self.present(vc!, animated: true, completion: nil)
+            } else{
+                ProgressHUD.showError("ERROR when creating user")
+            }
+        }
+        
+    }
     
     
 }
