@@ -10,10 +10,10 @@
 		847BDED02272132A00B6AEB7 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BDECF2272132A00B6AEB7 /* Comment.swift */; };
 		84B3239A2271337900F59045 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B323992271337900F59045 /* CommentCell.swift */; };
 		943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 943B976F222DD49400001534 /* GoogleService-Info.plist */; };
+		94961E1022834C5000E858F5 /* xassets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94961E0F22834C5000E858F5 /* xassets.xcassets */; };
 		949F9E6D222F3E23004F4953 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F9E6C222F3E23004F4953 /* ProfileViewController.swift */; };
 		94A5A509222DCDC50000821B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5A508222DCDC50000821B /* AppDelegate.swift */; };
 		94A5A50E222DCDC50000821B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50C222DCDC50000821B /* Main.storyboard */; };
-		94A5A510222DCDC70000821B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A50F222DCDC70000821B /* Assets.xcassets */; };
 		94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A5A511222DCDC70000821B /* LaunchScreen.storyboard */; };
 		B30AC40222457CE9003970F6 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30AC40122457CE9003970F6 /* VideoCell.swift */; };
 		B318412E2255363200908EFE /* EditAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318412D2255363200908EFE /* EditAlbumViewController.swift */; };
@@ -30,7 +30,6 @@
 		B38584A62241712800BA1A75 /* ProfileSlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */; };
 		B3DC8BBA2277AFB1001E6AEA /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */; };
 		B3DC8BBC2277C810001E6AEA /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */; };
-		E22CB340225E7076006C5043 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E22CB33F225E7072006C5043 /* background.jpg */; };
 		E2F40A00222F425400515593 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F409FF222F425400515593 /* CreateAccount.swift */; };
 		E2F40A02222FBF8000515593 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F40A01222FBF8000515593 /* MapViewController.swift */; };
 		FC351772473F4880F077CD7D /* Pods_Twideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2016868D358D3A946D300 /* Pods_Twideo.framework */; };
@@ -41,11 +40,11 @@
 		84B323992271337900F59045 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		8BB2016868D358D3A946D300 /* Pods_Twideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		943B976F222DD49400001534 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		94961E0F22834C5000E858F5 /* xassets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = xassets.xcassets; sourceTree = "<group>"; };
 		949F9E6C222F3E23004F4953 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		94A5A505222DCDC50000821B /* Twideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A5A508222DCDC50000821B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A5A50D222DCDC50000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		94A5A50F222DCDC70000821B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A5A512222DCDC70000821B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94A5A514222DCDC70000821B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B30AC40122457CE9003970F6 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -64,7 +63,6 @@
 		B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		BA5D54B119F5671A695C8A5B /* Pods-Twideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.debug.xcconfig"; sourceTree = "<group>"; };
-		E22CB33F225E7072006C5043 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		E2F409FF222F425400515593 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		E2F40A01222FBF8000515593 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FD75FF31D2A20804EA4FCBD6 /* Pods-Twideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twideo/Pods-Twideo.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +101,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		94961E0D2283439100E858F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94A5A50C222DCDC50000821B /* Main.storyboard */,
+				B34193E32242C04B0027E7CA /* AddViews.storyboard */,
+				94A5A511222DCDC70000821B /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		94961E0E228343A800E858F5 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				B38584A02240B36700BA1A75 /* Authentication */,
+				B324144522471E490037FFA9 /* Cells */,
+				B318412B2255360600908EFE /* Add Views */,
+				B318412C2255361900908EFE /* Edit Views */,
+				94A5A508222DCDC50000821B /* AppDelegate.swift */,
+				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
+				E2F40A01222FBF8000515593 /* MapViewController.swift */,
+				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
+				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
+				B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */,
+				B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */,
+				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
+				847BDECF2272132A00B6AEB7 /* Comment.swift */,
+				84B323992271337900F59045 /* CommentCell.swift */,
+				B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
 		94A5A4FC222DCDC50000821B = {
 			isa = PBXGroup;
 			children = (
@@ -124,28 +154,11 @@
 		94A5A507222DCDC50000821B /* Twideo */ = {
 			isa = PBXGroup;
 			children = (
-				E22CB33F225E7072006C5043 /* background.jpg */,
-				94A5A508222DCDC50000821B /* AppDelegate.swift */,
-				B38584A02240B36700BA1A75 /* Authentication */,
-				B324144522471E490037FFA9 /* Cells */,
-				B318412B2255360600908EFE /* Add Views */,
-				B318412C2255361900908EFE /* Edit Views */,
-				949F9E6C222F3E23004F4953 /* ProfileViewController.swift */,
-				E2F40A01222FBF8000515593 /* MapViewController.swift */,
-				B38584A32240B45E00BA1A75 /* IndividualAlbumViewController.swift */,
-				B38584A12240B41400BA1A75 /* AlbumsViewController.swift */,
-				B38584A52241712800BA1A75 /* ProfileSlideOutViewController.swift */,
-				B3DC8BBB2277C810001E6AEA /* DiscoverViewController.swift */,
-				B33F621E222F383A00CA0B95 /* VideoViewController.swift */,
-				847BDECF2272132A00B6AEB7 /* Comment.swift */,
-				84B323992271337900F59045 /* CommentCell.swift */,
-				B3DC8BB92277AFB0001E6AEA /* CommentViewController.swift */,
-				94A5A50C222DCDC50000821B /* Main.storyboard */,
-				B34193E32242C04B0027E7CA /* AddViews.storyboard */,
-				94A5A511222DCDC70000821B /* LaunchScreen.storyboard */,
-				94A5A50F222DCDC70000821B /* Assets.xcassets */,
+				94961E0E228343A800E858F5 /* Control */,
+				94961E0D2283439100E858F5 /* View */,
 				94A5A514222DCDC70000821B /* Info.plist */,
 				943B976F222DD49400001534 /* GoogleService-Info.plist */,
+				94961E0F22834C5000E858F5 /* xassets.xcassets */,
 			);
 			path = Twideo;
 			sourceTree = "<group>";
@@ -248,8 +261,7 @@
 				94A5A513222DCDC70000821B /* LaunchScreen.storyboard in Resources */,
 				B34193E42242C04B0027E7CA /* AddViews.storyboard in Resources */,
 				943B9770222DD49400001534 /* GoogleService-Info.plist in Resources */,
-				E22CB340225E7076006C5043 /* background.jpg in Resources */,
-				94A5A510222DCDC70000821B /* Assets.xcassets in Resources */,
+				94961E1022834C5000E858F5 /* xassets.xcassets in Resources */,
 				94A5A50E222DCDC50000821B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
