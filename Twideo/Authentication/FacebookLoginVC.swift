@@ -14,6 +14,7 @@ import FacebookCore
 import FacebookLogin
 import FirebaseAuth
 import FirebaseDatabase
+import ProgressHUD
 class FacebookLoginVC: UIViewController, FBSDKLoginButtonDelegate, LoginButtonDelegate{
     
     
@@ -97,6 +98,8 @@ class FacebookLoginVC: UIViewController, FBSDKLoginButtonDelegate, LoginButtonDe
                 return
             }
             print("Firebase login done")
+            
+            ProgressHUD.show("Signing In")
             if let user = Auth.auth().currentUser{
                 
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -106,11 +109,32 @@ class FacebookLoginVC: UIViewController, FBSDKLoginButtonDelegate, LoginButtonDe
                         guard let userInfo = result as? [String: Any] else { return } //handle the error
                         if let name = userInfo["name"] as? String{
                             
+                            
+                            //The url is nested 3 layers deep into the result so it's pretty messy
+                            if let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                                //Download image from imageURL
+                                do {
+                                    let data = try Data(contentsOf: URL(string: imageURL)!)
+                                    
+                                    appDelegate.userImage = UIImage(data: data)
+                                    
+                                }
+                                catch{
+                                    print("Error getting image from fb")
+                                    
+                                }
+                            } else {
+                                ProgressHUD.showError("Failed to Login")
+                            }
                             Database.database().reference().child("users").child(user.uid).updateChildValues(["uid" : user.uid, "username": name])
                             //                Database.database().reference().child("users").updateChildValues([user.uid:1])
+                            
                             self.performSegue(withIdentifier: "loggedIn", sender: self)
+                            ProgressHUD.showSuccess("Logged In")
                             print("Current firebase user is")
                             print(user)
+                        } else {
+                            ProgressHUD.showError("Failed to Login")
                         }
                     })
                         

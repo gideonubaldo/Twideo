@@ -7,9 +7,11 @@
 //
 import UIKit
 import FBSDKCoreKit
+import FBSDKLoginKit
 import SideMenu
 import Firebase
 import ProgressHUD
+import FacebookCore
 class AlbumsViewController: UITableViewController{
     
     
@@ -41,7 +43,7 @@ class AlbumsViewController: UITableViewController{
         definesPresentationContext = true
         
         self.selectedAlbums = self.myAlbums
-        
+        self.title = "My Albums"
         
     }
     
@@ -65,6 +67,7 @@ class AlbumsViewController: UITableViewController{
         }
     }
     
+    
     func loadSharedAlbums(){
         
         guard let uid = Auth.auth().currentUser?.uid else {
@@ -78,8 +81,14 @@ class AlbumsViewController: UITableViewController{
             print("ADEED \(albumId)")
             Database.database().reference().child("albums").child(albumId).queryOrdered(byChild: "title").observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                let albumDict = snapshot.value as! NSDictionary
-                self.sharedAlbums.append(albumDict)
+                if let albumDict = snapshot.value as? NSDictionary{
+                    self.sharedAlbums.append(albumDict)
+                    
+                }
+                if self.isSharedAlbums {
+                    self.selectedAlbums = self.sharedAlbums
+                }
+                
             
             })
         }
@@ -144,9 +153,6 @@ class AlbumsViewController: UITableViewController{
         FBSDKProfile.loadCurrentProfile { (profile, error) in
             
             if let p = profile{
-                print(p)
-                let fname = p.firstName
-                print(fname)
                 
                 let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
                 let request = FBSDKGraphRequest(graphPath: "\(p.userID)/user_friends", parameters: params)
@@ -272,9 +278,6 @@ class AlbumsViewController: UITableViewController{
         let editAction = UIContextualAction(style: .normal, title: editTitle) { (action, sourceView, completionHandler) in
             
             
-            let albumId = self.selectedAlbums[indexPath.row]["albumId"] as! String
-            
-            let albumRef = Database.database().reference().child("albums").child(albumId)
             
             let storyboard: UIStoryboard = UIStoryboard(name: "AddViews", bundle: nil)
             let editAlbumVC = storyboard.instantiateViewController(withIdentifier: "EditAlbum") as! EditAlbumViewController
@@ -327,7 +330,7 @@ class AlbumsViewController: UITableViewController{
         
         //        (self.tableView.cellForRow(at: indexPath) as! AlbumTableViewCell).hideSwipe(animated: false)
         self.selectedAlbums.remove(at: indexPath.row)
-        
+        self.myAlbums.remove(at: indexPath.row)
         Storage.storage().reference().child("videos").child(albumId).delete(completion: nil)
         
         var videoIdsToDelete = [String]()

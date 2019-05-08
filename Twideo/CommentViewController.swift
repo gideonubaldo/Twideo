@@ -81,7 +81,7 @@ class CommentViewController: UIViewController {
             let commentContent = snapshot.value! as? NSDictionary
             //print("commentContent:\(commentContent)")
             let stringArray = commentContent?.allValues as! [String]
-            var newComment = Comment(videoID: "videoID", author: stringArray[2], content: stringArray[0], timestamp: stringArray[2])
+            let newComment = Comment(videoID: "videoID", author: stringArray[2], content: stringArray[0], timestamp: stringArray[2])
                 self.comments.append(newComment)
                self.tableView.reloadData()
             

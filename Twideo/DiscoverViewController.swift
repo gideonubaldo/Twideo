@@ -40,6 +40,8 @@ class DiscoverViewController: UITableViewController{
         searchBar.delegate = self
         definesPresentationContext = true
         
+        self.title = "Share"
+        
         self.tableView.register(UserCell.self, forCellReuseIdentifier: "UserCell")
 
         loadUsers()
@@ -65,7 +67,10 @@ class DiscoverViewController: UITableViewController{
             
             
             let userDict = snapshot.value as! NSDictionary
-            self.users.append(userDict)
+            if snapshot.key != Auth.auth().currentUser?.uid{
+                self.users.append(userDict)
+                
+            }
             
 //            self.users.append(["username": snapshot.key])
             self.tableView.reloadData()

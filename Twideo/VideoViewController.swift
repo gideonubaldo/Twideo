@@ -53,7 +53,7 @@ class VideoViewController: UIViewController {
         self.lengthLabel.text = "Length: \(videoModel!.duration!)"
     
         self.playVideo()
-        
+    
 	}
 	
     func playVideo() {
@@ -75,7 +75,7 @@ class VideoViewController: UIViewController {
 //            // Add subview in your view
 //            self.view.addSubview(playerController.view)
 //
-            player.play()
+//            player.play()
         }
         
         

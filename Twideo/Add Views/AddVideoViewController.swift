@@ -50,7 +50,7 @@ class AddVideoViewController: UIViewController, UIImagePickerControllerDelegate,
 //            manager.requestLocation()
 
         } else {
-            print("IDK")
+            print("Services not enabled")
         }
         
         

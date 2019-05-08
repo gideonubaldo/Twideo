@@ -11,9 +11,9 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import FacebookCore
 import FacebookLogin
+import Firebase
 
-
-class ProfileViewController: UIViewController , FBSDKLoginButtonDelegate{
+class ProfileViewController: UIViewController{
   
 
     @IBOutlet weak var albumCountTitle: UILabel!
@@ -24,26 +24,40 @@ class ProfileViewController: UIViewController , FBSDKLoginButtonDelegate{
     @IBOutlet weak var videoCountLabel: UILabel!
     @IBOutlet weak var shareCountLabel: UILabel!
     
-    @IBOutlet weak var logoutButton: FBSDKLoginButton!
+    @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         albumCountTitle.numberOfLines = 0
         [albumCountTitle .sizeToFit()]
-        logoutButton.delegate = self
         
         logoutButton.sizeToFit()
     }
-    
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+
+    @IBAction func logoutPressed(_ sender: Any) {
+        
+        do {
+            if AccessToken.current != nil{
+                //logged in with facebook
+                let loginManager = FBSDKLoginManager()
+                loginManager.logOut()
+            }
+            try Auth.auth().signOut()
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let signInVC = storyboard.instantiateViewController(withIdentifier: "Login")
+            
+            present(signInVC, animated: true, completion: nil)
+            
+        } catch let logoutError{
+            
+            print(logoutError)
+            
+        }
         
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-
 
 }
