@@ -47,10 +47,10 @@ class VideoViewController: UIViewController {
     }
 	func configureView(){
         
-        self.descriptionLabel.text = "Description: \(videoModel!.description!)"
-        self.notesLabel.text = "Notes: \(videoModel!.notes!)"
-        self.formatLabel.text = "Format: \(videoModel!.fileType!)"
-        self.lengthLabel.text = "Length: \(videoModel!.duration!)"
+        self.descriptionLabel.text = " \(videoModel!.description!)"
+        self.notesLabel.text = "\(videoModel!.notes!)"
+        self.formatLabel.text = "\(videoModel!.fileType!)"
+        self.lengthLabel.text = "\(videoModel!.duration!.rounded(toPlaces: 2)) sec."
     
         self.playVideo()
     
@@ -83,5 +83,16 @@ class VideoViewController: UIViewController {
     
     func stopVideo() {
         player.pause()
+    }
+}
+
+
+extension Double {
+    
+    public func rounded(toPlaces places: Int) -> Double {
+        
+        let divisor = pow(10.0, Double(places))
+        
+        return (self * divisor).rounded() / divisor
     }
 }
